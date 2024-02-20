@@ -33,7 +33,7 @@ export default function FrontPage() {
       if (Query.length != 0) {
         return (
           <>
-            {/* <div className="search-panel">
+            <div className="search-panel">
               <Search data={Data} query={changeQuery}></Search>
             </div>
 
@@ -43,16 +43,16 @@ export default function FrontPage() {
                 key++;
                 return <Carddisplay key={key} props={Query}></Carddisplay>;
               })}
-            </div> */}
+            </div>
           </>
         );
       } else {
       }
       return (
         <>
-          {/* <div className="search-panel">
+          <div className="search-panel">
             <Search data={Data} query={changeQuery}></Search>
-          </div> */}
+          </div>
 
           <div className="frontpage-grid">
             <h2 className="center-h1">Alle eksempler</h2>

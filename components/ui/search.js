@@ -7,7 +7,8 @@ export default function Search(props) {
   let matcharr = [];
   let element;
   let queryData = [];
-  let data = [...props.data.result];
+  console.log(props.data.result.data)
+  let data = [...props.data.result.data];
   const changeQuery = props.query;
   useEffect(() => {
     changeQuery(queryData);
@@ -19,13 +20,16 @@ export default function Search(props) {
     matcharr = value.split(" ");
 
     let searchResults = data.filter((elm) => {
-      let wordArr = elm.data.name
+      console.log(elm)
+      let wordArr = elm.attributes.page_heading
         .toLowerCase()
         .split(" ")
         .filter((str) => str !== "");
       // console.log(elm.data.tags);
       element = elm;
-     return  wordArr.some(item => matcharr.includes(item) || elm.data.tags.some(tag => matcharr.includes(tag)));
+      console.log(typeof elm.attributes.page_tags[0].meta_tags)
+      const tagarray = elm.attributes.page_tags[0].meta_tags.split(" ");
+     return  wordArr.some(item => matcharr.includes(item) || tagarray.some(tag => matcharr.includes(tag)));
     });
     // console.log(searchResults.length);
     ///puhser elm arr

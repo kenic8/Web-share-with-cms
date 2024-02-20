@@ -34,9 +34,9 @@ export default function quiz({ props }) {
       if (Query.length != 0) {
         return (
           <>
-            {/* <div className="search-panel">
+            <div className="search-panel">
               <Search data={Data} query={changeQuery}></Search>
-            </div> */}
+            </div>
 
             <div className="frontpage-grid">
             <h2 className="center-h1">Dine resultater:</h2>
@@ -58,10 +58,10 @@ export default function quiz({ props }) {
       }
       return (
         <>
-          {/* <div className="search-panel">
+          <div className="search-panel">
             <Search data={Data} query={changeQuery}></Search>
           </div>
-        */}
+       
         {console.log(Data.result.data)}
           <div className="frontpage-grid">
           <h1 className="center-h1">quiz</h1>

@@ -7,7 +7,6 @@ import { CardActionArea } from "@mui/material";
 
 export default function Carddisplay({ props }) {
   // console.log("hej", props.attributes.page_tags[0].meta_tags);
-  console.log("hej", props.attributes.page_tags[0].meta_tags );
   // let link = "/updatepost?id=" + props.id;
   let link = "/displaypost/singlepost?id=" + props.id;
   return (
