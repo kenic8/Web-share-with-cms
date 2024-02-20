@@ -1,5 +1,5 @@
 import { useAuthContext } from "@/firebase/auth/authcontext";
-import getDoument from "@/firebase/database/getdata";
+import getDoument, { getDocumentfilter } from "@/firebase/database/getdata";
 import DisplayPost from "@/pages/displaypost";
 import Search from "@/components/ui/search";
 import NavsideSubpage from "@/components/nav/navside-subpage";
@@ -14,7 +14,7 @@ export default function Templates({ props }) {
   let [Query, setQuery] = useState([]);
   const nav = ["templates"];
   let whoami;
-
+  console.log(Data);
   const changeQuery = (f) => {
     setQuery(f);
     console.log(Query);
@@ -22,7 +22,7 @@ export default function Templates({ props }) {
   ///datachange effect
   useEffect(() => {
     async function getData() {
-      const fetch = await getDoument("template");
+      const fetch = await getDocumentfilter("template");
       setData(fetch);
     }
     getData();
@@ -34,9 +34,9 @@ export default function Templates({ props }) {
       if (Query.length != 0) {
         return (
           <>
-            <div className="search-panel">
+            {/* <div className="search-panel">
               <Search data={Data} query={changeQuery}></Search>
-            </div>
+            </div> */}
 
             <div className="frontpage-grid">
             <h2 className="center-h1">Dine resultater:</h2>
@@ -58,17 +58,18 @@ export default function Templates({ props }) {
       }
       return (
         <>
-          <div className="search-panel">
+          {/* <div className="search-panel">
             <Search data={Data} query={changeQuery}></Search>
           </div>
-       
+        */}
+        {console.log(Data.result.data)}
           <div className="frontpage-grid">
           <h1 className="center-h1">Templates</h1>
             <div className="page-content">
               <div className="page-content-link-grid">
-                {Data.result.map(function (Data, key = 0) {
+                {Data.result.data.map(function (Data, key = 0) {
                   key++;
-                  nav.push(Data.data.name);
+                  nav.push(Data.attributes.page_heading);
 
                   return <DisplayPost key={key} props={Data}></DisplayPost>;
                 })}

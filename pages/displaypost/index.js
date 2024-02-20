@@ -17,41 +17,63 @@ function DisplayPost({ props }) {
     whoami = user["uid"];
     let link = "/displaypost/singlepost?id=" + props.id;
     return (
-      <div className="content-wrapper-template" id={props.data.name}>
+      <div className="content-wrapper-template" id={props.attributes.page_heading}>
         <div className="sub-content-wrapper">
-          {/* {console.log(data.category)} */}
-          <h1>{props.data.name} </h1>
-          {props.data.content?.map((section, index) => (
+          <h1>{props.attributes.page_heading} </h1>
+          <div className="meta-info">
+            <h3>Creation date: {props.attributes.createdAt}</h3>
+            <h3>Last updated: {props.attributes.updatedAt}</h3>
+          </div>
+         {console.log(props)}
+          {props.attributes.content_blocks?.map((contentItem, index) => (
+
+            console.log(contentItem),
             <div key={index}>
               <h3> Section {index + 1}</h3>
-              {section.contentsection.map((contentItem, contentIndex) => (
-                <div key={contentIndex}>
-                   {contentItem.type === "Sectionheading" && (
-                    <h1>{contentItem.content}</h1>
-                  )}
 
-                  {contentItem.type === "Sectionsubheading" && (
-                    <h4>{contentItem.content}</h4>
-                  )}
-
-                  {contentItem.type === "Imagecontent" && (
-                    <div>
-                      <img src={"../images/" + contentItem.content} alt="Image" />
-                    </div>
-                  )}
-
-                  {contentItem.type === "Htmlcontent" && (
+              <div key={index}>
+                {contentItem.__component === "content.image-content" && (
+                  <div>
+                    <img
+                      src={
+                        "http://localhost:1337" +
+                        contentItem.Image_content.data.attributes.url
+                      }
+                      alt="Image"
+                    />
+                  </div>
+                )}
+                {contentItem.__component === "content.image-text-content" && (
+                  <div>
+                    <h4>{contentItem.Image_heading}</h4>
+                    <img
+                      src={
+                        "http://localhost:1337" +
+                        contentItem.Image_content.data.attributes.url
+                      }
+                      alt="Image"
+                    />
+                    <h4>{contentItem.text_heading}</h4>
+                    <p>{contentItem.text_content}</p>
                     <div>
                       <p>{contentItem.content}</p>
                     </div>
-                  )}
-                  
-                </div>
-              ))}
+                  </div>
+                )}
+                {contentItem.__component === "content.text-content" && (
+                  <div>
+                    <h4>{contentItem.heading}</h4>
+                    <p>{contentItem.text_content[0].children[0].text}</p>
+                  </div>
+                )}
+              </div>
             </div>
           ))}
-          <h3>Creator: {props.data.creator}</h3>
-          <Link className="se-mere-button" href={link}> <p>mere info</p> </Link>
+          <h3>Creator: {props.attributes.createdBy.data.attributes.firstname}</h3>
+          <Link className="se-mere-button" href={link}>
+            {" "}
+            <p>mere info</p>{" "}
+          </Link>
         </div>
       </div>
     );

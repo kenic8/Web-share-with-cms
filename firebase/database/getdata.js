@@ -118,7 +118,7 @@ export default async function getDocument(id) {
     console.log("single");
     try {
       const response = await fetch(
-        `http://localhost:1337/api/content-pages/${id}?populate[0]=content_blocks.Image_content&populate[1]=createdBy`,
+        `http://localhost:1337/api/content-pages/${id}?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
         {
           method: "GET",
           headers: {
@@ -142,7 +142,7 @@ export default async function getDocument(id) {
     console.log("all");
     try {
       const response = await fetch(
-        `http://localhost:1337/api/content-pages?populate=%2A`,
+        `http://localhost:1337/api/content-pages/?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
         {
           method: "GET",
           headers: {
@@ -166,13 +166,57 @@ export default async function getDocument(id) {
 }
 
 
+export  async function getDocumentfilter(id) {
+  let result = null;
+  let error = null;
+  let data = [];
+  console.log(id)
+
+  if (id != null) {
+    console.log("filter");
+    try {
+      const response = await fetch(
+        `http://localhost:1337/api/content-pages/?filters[page_category][$eq]=${id}&populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      data = await response.json();
+      result = data;
+    } catch (err) {
+      error = err.message;
+    }
+
+    return { result, error };
+  } 
+
+}
+
+
+
+
 const qs = QueryString;
 
 const squery = qs.stringify(
   {
+    filters:[
+      {page_category:{
+        $eq:"template"
+      }}
+
+    ],
     populate: [
       "content_blocks.Image_content",
-      "createdBy"
+      "createdBy",
+      "page_tags"
     ],
   },
   {

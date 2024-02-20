@@ -677,7 +677,7 @@ input[type='checkbox'] {
     border-width: 1px;
     border-radius: 10px;
     max-height: 250px;
-    object-fit: cover;
+    object-fit: scale-down;
   }
 
 
