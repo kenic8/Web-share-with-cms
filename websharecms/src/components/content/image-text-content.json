@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_content_image_text_contents",
+  "info": {
+    "displayName": "Image_Text_content",
+    "icon": "dashboard",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Image_heading": {
+      "type": "string"
+    },
+    "Image_content": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "text_heading": {
+      "type": "string"
+    },
+    "text_content": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_content_text_contents",
+  "info": {
+    "displayName": "text_content",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "text_content": {
+      "type": "blocks"
+    }
+  }
+}

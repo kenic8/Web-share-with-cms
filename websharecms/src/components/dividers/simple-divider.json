@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_dividers_simple_dividers",
+  "info": {
+    "displayName": "Simple_divider",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "divider_heading": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_metadata_meta_data",
+  "info": {
+    "displayName": "meta_data",
+    "icon": "oneToMany",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "meta_tags": {
+      "type": "string"
+    }
+  }
+}

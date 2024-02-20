@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_pages",
+  "info": {
+    "singularName": "content-page",
+    "pluralName": "content-pages",
+    "displayName": "Content_Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true,
+    "populateCreatorFields": true
+
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "page_heading": {
+      "type": "string"
+    },
+    "page_category": {
+      "type": "enumeration",
+      "enum": [
+        "template",
+        "quiz",
+        "video"
+      ]
+    },
+    "Content_UID": {
+      "type": "uid",
+      "targetField": "page_heading"
+    },
+    "content_blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "content.image-content",
+        "content.image-text-content",
+        "content.text-content",
+        "dividers.simple-divider"
+      ]
+    },
+    "page_teaser": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "page_tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "metadata.meta-data"
+    }
+  }
+}
