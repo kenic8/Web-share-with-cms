@@ -8,7 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 ///get data from search
 
-export default function quiz({ props }) {
+export default function Quiz({ props }) {
   const [Data, setData] = useState([]);
   const user = useAuthContext();
   let [Query, setQuery] = useState([]);
