@@ -536,8 +536,6 @@ input[type='checkbox'] {
 
     }
 
-
-
   }
 
 
@@ -640,7 +638,7 @@ input[type='checkbox'] {
   }
 
   img {
-    width: 100%;
+    width: 99%;
     border: #d2d8d7;
     border-style: solid;
     border-width: 1px;
@@ -654,6 +652,30 @@ input[type='checkbox'] {
   h4{
     color: #f37a76
   }
+}
+
+
+.Profile-image{
+  width: 20%;
+  margin: 5% 2% 4%; 
+  
+  border-radius: 50%;
+  border: solid;
+  border-width:1px;  
+  object-fit: cover;
+  color: #f1f5f469;
+  
+
+}
+
+#profile-image-preview{
+  width: 50%;
+  margin: 5% 0% 5%;
+  border-radius: 22px;
+  border: solid;
+  border-width: 1px;
+  border-color: #777a7a;
+  max-height: 200px;
 }
 
 .content-wrapper-template {

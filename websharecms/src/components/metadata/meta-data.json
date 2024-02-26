@@ -10,7 +10,7 @@
     "meta_tags": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": false
     }
   }
 }

@@ -1,0 +1,9 @@
+strapi : 8080
+webshare : 3000
+vscode: 8377
+
+
+http://192.168.88.201/
+
+http://192.168.88.201:8080/admin  ---> backend 
+http://192.168.88.201:3000    ---> Frontend

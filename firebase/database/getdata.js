@@ -118,7 +118,7 @@ export default async function getDocument(id) {
     console.log("single");
     try {
       const response = await fetch(
-        `http://localhost:1337/api/content-pages/${id}?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
+        `https://97ldj44w-1337.euw.devtunnels.ms/api/content-pages/${id}?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
         {
           method: "GET",
           headers: {
@@ -126,7 +126,7 @@ export default async function getDocument(id) {
           },
         }
       );
-
+      
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -142,7 +142,7 @@ export default async function getDocument(id) {
     console.log("all");
     try {
       const response = await fetch(
-        `http://localhost:1337/api/content-pages/?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
+        `https://97ldj44w-1337.euw.devtunnels.ms/api/content-pages/?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
         {
           method: "GET",
           headers: {
@@ -176,7 +176,7 @@ export  async function getDocumentfilter(id) {
     console.log("filter");
     try {
       const response = await fetch(
-        `http://localhost:1337/api/content-pages/?filters[page_category][$eq]=${id}&populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
+        `https://97ldj44w-1337.euw.devtunnels.ms/api/content-pages/?filters[page_category][$eq]=${id}&populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
         {
           method: "GET",
           headers: {

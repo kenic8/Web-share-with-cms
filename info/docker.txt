@@ -1,0 +1,24 @@
+DOCKER:
+
+watch : docker logs "id på container" --follow
+
+
+Ls : docker ps -n 5    --> list containers
+
+
+
+
+
+
+
+https://refine.dev/blog/docker-list-containers/#conclusion
+
+https://docs.docker.com/engine/reference/commandline/container_logs/
+
+
+
+Openbash :  docker exec -it latest  bash
+
+
+
+https://www.google.com/search?q=synology+strapi+docker&oq=synology+strapi+docker&gs_lcrp=EgZjaHJvbWUyCwgAEEUYChg5GKABMgkIARAhGAoYoAEyCQgCECEYChigATIJCAMQIRgKGKABMgkIBBAhGAoYoAHSAQg2MTU0ajBqNKgCALACAA&sourceid=chrome&ie=UTF-8#fpstate=ive&vld=cid:8406e6ae,vid:k5KdguLX4NE,st:0

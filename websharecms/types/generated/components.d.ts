@@ -59,7 +59,7 @@ export interface MetadataMetaData extends Schema.Component {
     description: '';
   };
   attributes: {
-    meta_tags: Attribute.String & Attribute.Required & Attribute.Unique;
+    meta_tags: Attribute.String & Attribute.Required;
   };
 }
 

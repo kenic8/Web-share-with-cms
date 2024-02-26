@@ -8,20 +8,53 @@ import LoginIcon from "@mui/icons-material/Login";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import { useEffect, useState } from "react";
+import {
+  firebase_app,
+  firestore,
+  ref,
+  getDownloadURL,
+} from "@/firebase/config";
+
+
 
 export default function Navside({ children }) {
   const user = useAuthContext();
   const greeting = user ? user["email"] : "";
+  const [imageUrl, setImageUrl] = useState("");
+
+  const firestoredb = firestore;
+  const firestorref = ref;
+  const getDownload = getDownloadURL;
+
+
+  useEffect(() => {
+    if (typeof user != "undefined" && user != null) {
+      const imagesRef = firestorref(
+        firestoredb,
+        `profileImages/${user.uid}`
+      );
+        getDownload(imagesRef)
+        .then((url) => {
+          setImageUrl(url);
+        })
+        .catch((error) => {
+          console.error("Error getting download URL:", error);
+        });
+    }
+  }, [imageUrl,user]);
+
   return (
     <>
       <aside className="nav">
         <div className="profile-top-section">
-          <h4>
-            Hej!<br></br>
-            {greeting}
-          </h4>
+          {imageUrl && (
+            <img src={imageUrl} className="Profile-image" alt="profileimage" />
+          )}
+          <h4>{greeting}</h4>
         </div>
         <div className="sideNavigation">
+          <h3 className="nav-info"> Dashboard</h3>
           {/* Toplayer --> sub catagories --> subcategories  */}
           <Link className="nav-link" href="/">
             <HomeIcon></HomeIcon>
@@ -35,11 +68,20 @@ export default function Navside({ children }) {
             <DashboardIcon></DashboardIcon>
             <p>Components</p>
           </Link>
-          <Link className="nav-link" href="/createpost">
+          {/* <Link className="nav-link" href="/createpost">
+            <AddBoxIcon></AddBoxIcon>
+            <p>Create</p>
+          </Link> */}
+          <h3 className="nav-info">Interactions</h3>
+          <Link
+            className="nav-link"
+            href="http://localhost:1337/admin/"
+            target="blank"
+          >
             <AddBoxIcon></AddBoxIcon>
             <p>Create</p>
           </Link>
-          <Link className="nav-link" href="/admin">
+          <Link className="nav-link" href="/">
             <AdminPanelSettingsIcon></AdminPanelSettingsIcon>
             <p>Admin</p>
           </Link>
@@ -49,10 +91,8 @@ export default function Navside({ children }) {
               <LoginIcon />
               <p>Login</p>
             </Link>
-          ) : (
-            null
-          )}
-          {(user != null ? <Signout></Signout> : null)}
+          ) : null}
+          {user != null ? <Signout></Signout> : null}
         </div>
       </aside>
     </>
