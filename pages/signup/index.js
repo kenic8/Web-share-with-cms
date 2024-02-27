@@ -30,7 +30,8 @@ function Page() {
     const { result, error } = await signUp(email, password,image);
 
     if (error) {
-      return console.log(error);
+      return (alert(error));
+      
     }
     // else successful
     console.log(result);

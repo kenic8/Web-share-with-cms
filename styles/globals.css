@@ -656,14 +656,15 @@ input[type='checkbox'] {
 
 
 .Profile-image{
-  width: 20%;
-  margin: 5% 2% 4%; 
+  width:22%;
+  margin: 5% 5% 5%; 
+  padding: 1%;
   
-  border-radius: 50%;
+  border-radius: 10px;
   border: solid;
-  border-width:1px;  
-  object-fit: cover;
-  color: #f1f5f469;
+  border-width:2px;  
+  object-fit: scale-down;
+  color: #f1f5f433;
   
 
 }

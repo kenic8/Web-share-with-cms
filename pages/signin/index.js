@@ -14,7 +14,7 @@ function Page() {
     event.preventDefault();
     const { result, error } = await signIn(email, password);
     if (error) {
-      return console.log(error);
+      return alert(error);
     }
 
     // else successful

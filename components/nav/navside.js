@@ -10,7 +10,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import { useEffect, useState } from "react";
 import {
-  firebase_app,
   firestore,
   ref,
   getDownloadURL,
@@ -22,7 +21,6 @@ export default function Navside({ children }) {
   const user = useAuthContext();
   const greeting = user ? user["email"] : "";
   const [imageUrl, setImageUrl] = useState("");
-
   const firestoredb = firestore;
   const firestorref = ref;
   const getDownload = getDownloadURL;
@@ -75,7 +73,7 @@ export default function Navside({ children }) {
           <h3 className="nav-info">Interactions</h3>
           <Link
             className="nav-link"
-            href="http://localhost:1337/admin/"
+            href="https://97ldj44w-1337.euw.devtunnels.ms/admin"
             target="blank"
           >
             <AddBoxIcon></AddBoxIcon>
@@ -92,7 +90,7 @@ export default function Navside({ children }) {
               <p>Login</p>
             </Link>
           ) : null}
-          {user != null ? <Signout></Signout> : null}
+          {user != null ? <Signout setImageUrl={setImageUrl} ></Signout> : null}
         </div>
       </aside>
     </>
