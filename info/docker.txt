@@ -5,9 +5,13 @@ watch : docker logs "id på container" --follow
 
 Ls : docker ps -n 5    --> list containers
 
+docker rmi $(docker images -a -q) - images
+docker rm $(docker ps -a -q)   - containers 
+docker stop $(docker ps -q)
 
 
 
+Db: Root + "naspassword"
 
 
 

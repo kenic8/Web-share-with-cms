@@ -1,0 +1,5 @@
+Linux 
+
+du -h   ----Se Filer
+
+df -h   ----- Se Mapper
