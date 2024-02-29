@@ -67,9 +67,9 @@ export default function Templates({ props }) {
           <h1 className="center-h1">Templates</h1>
             <div className="page-content">
               <div className="page-content-link-grid">
-                {Data.result.data.map(function (Data, key = 0) {
+                {Data.result.map(function (Data, key = 0) {
                   key++;
-                  nav.push(Data.attributes.page_heading);
+                  nav.push(Data.page_heading);
 
                   return <DisplayPost key={key} props={Data}></DisplayPost>;
                 })}

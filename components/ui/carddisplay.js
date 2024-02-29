@@ -14,8 +14,8 @@ export default function Carddisplay({ props }) {
       <Link className="post-link" href={link} props={props}>
         <Card sx={{ maxWidth: 4 / 4 }}>
           <CardActionArea>
-            {props.attributes.page_category &&
-              props.attributes.page_category.includes("quiz") && (
+            {props.page_category &&
+              props.page_category.includes("quiz") && (
                 <CardMedia
                   component="img"
                   height="30"
@@ -24,8 +24,8 @@ export default function Carddisplay({ props }) {
                   loading="lazy"
                 />
               )}
-            {props.attributes.page_category &&
-              props.attributes.page_category.includes("template") && (
+            {props.page_category &&
+              props.page_category.includes("template") && (
                 <CardMedia
                   component="img"
                   height="30"
@@ -35,8 +35,8 @@ export default function Carddisplay({ props }) {
                 />
               )}
 
-            {props.attributes.page_category &&
-              props.attributes.page_category.includes("video") && (
+            {props.page_category &&
+              props.page_category.includes("video") && (
                 <CardMedia
                   component="img"
                   height="30"
@@ -48,9 +48,9 @@ export default function Carddisplay({ props }) {
 
             <CardContent>
               <Typography variant="body2" color="text.secondary">
-                {props.attributes.page_heading}
+                {props.page_heading}
               </Typography>
-              <Typography
+              {/* <Typography
                 gutterBottom
                 sx={{ maxWidth: 4 / 4 }}
                 variant="h7"
@@ -59,26 +59,26 @@ export default function Carddisplay({ props }) {
                 {props.attributes.createdBy.data.attributes.firstname +
                   " " +
                   props.attributes.createdBy.data.attributes.lastname}
-              </Typography>
+              </Typography> */}
 
               <Typography variant="h6" color="text.secondary">
-                {props.attributes.page_category}
+                {props.page_category}
               </Typography>
               <div className="card-flex-button">
-                {props.attributes.page_tags[0].meta_tags &&
-                  props.attributes.page_tags[0].meta_tags .includes("kode") && (
+                {props.page_tags.meta_tags &&
+                  props.page_tags.meta_tags .includes("kode") && (
                     <p className="tag-template" variant="outlined">
                       Kode
                     </p>
                   )}
 
-                {props.attributes.page_tags[0].meta_tags  &&
-                  props.attributes.page_tags[0].meta_tags .includes("interaktiv") && (
+                {props.page_tags.meta_tags  &&
+                  props.page_tags.meta_tags .includes("interaktiv") && (
                     <p className="tag-quiz">Interaktiv</p>
                   )}
                   
-                  {props.attributes.page_tags[0].meta_tags  &&
-                  props.attributes.page_tags[0].meta_tags .includes("multiplechoice") && (
+                  {props.page_tags.meta_tags  &&
+                  props.page_tags.meta_tags .includes("multiplechoice") && (
                     <p className="tag-video">Multiplechoice</p>
                   )}
 

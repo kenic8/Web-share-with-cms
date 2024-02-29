@@ -11,23 +11,27 @@ function DisplayPost({ props }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const user = useAuthContext();
+  const creator =
+  props.created_by && props.created_by.lastname
+    ? props.created_by.firstname + " " + props.created_by.lastname
+    : "Unknown";
 
   let whoami;
   if (user != null) {
     whoami = user["uid"];
     let link = "/displaypost/singlepost?id=" + props.id;
     return (
-      <div className="content-wrapper-template" id={props.attributes.page_heading}>
+      <div className="content-wrapper-template" id={props.page_heading}>
         <div className="sub-content-wrapper">
-          <h1>{props.attributes.page_heading} </h1>
+          <h1>{props.page_heading} </h1>
           <div className="meta-info">
-            <h3>Creation date: {props.attributes.createdAt}</h3>
-            <h3>Last updated: {props.attributes.updatedAt}</h3>
+            <h3>Creation date: {props.created_at}</h3>
+            <h3>Last updated: {props.updated_at}</h3>
           </div>
          {console.log(props)}
-          {props.attributes.content_blocks?.map((contentItem, index) => (
+          {props.content_blocks?.map((contentItem, index) => (
 
-            console.log(contentItem),
+            console.log( "iam item", contentItem),
             <div key={index}>
               <h3> Section {index + 1}</h3>
 
@@ -36,8 +40,7 @@ function DisplayPost({ props }) {
                   <div>
                     <img
                       src={
-                        "http://localhost:1337" +
-                        contentItem.Image_content.data.attributes.url
+                        `http://192.168.88.201:8080${contentItem.Image_content.url}`
                       }
                       alt="Image"
                     />
@@ -48,8 +51,7 @@ function DisplayPost({ props }) {
                     <h4>{contentItem.Image_heading}</h4>
                     <img
                       src={
-                        "http://localhost:1337" +
-                        contentItem.Image_content.data.attributes.url
+                        `http://192.168.88.201:8080${contentItem.Image_content[0].url}`
                       }
                       alt="Image"
                     />
@@ -63,13 +65,13 @@ function DisplayPost({ props }) {
                 {contentItem.__component === "content.text-content" && (
                   <div>
                     <h4>{contentItem.heading}</h4>
-                    <p>{contentItem.text_content[0].children[0].text}</p>
+                    <p>{contentItem.text_content.text}</p>
                   </div>
                 )}
               </div>
             </div>
           ))}
-          <h3>Creator: {props.attributes.createdBy.data.attributes.firstname}</h3>
+          <h3>Creator: {creator}</h3>
           <Link className="se-mere-button" href={link}>
             {" "}
             <p>mere info</p>{" "}

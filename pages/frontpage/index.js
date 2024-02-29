@@ -56,7 +56,7 @@ export default function FrontPage() {
 
           <div className="frontpage-grid">
             <h2 className="center-h1">Alle eksempler</h2>
-            {Data.result.data.map((element) => {
+            {Data.result.map((element) => {
             
               return <Carddisplay key={element.id} props={element} id={element.id}></Carddisplay>;
             })}

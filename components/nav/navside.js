@@ -73,7 +73,7 @@ export default function Navside({ children }) {
           <h3 className="nav-info">Interactions</h3>
           <Link
             className="nav-link"
-            href="https://97ldj44w-1337.euw.devtunnels.ms/admin"
+            href="http://192.168.88.201:8080/admin/auth/login"
             target="blank"
           >
             <AddBoxIcon></AddBoxIcon>

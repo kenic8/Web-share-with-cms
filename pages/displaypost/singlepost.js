@@ -13,19 +13,13 @@ function DisplaySinglePost({ props }) {
   const user = useAuthContext();
   const [Data, setData] = useState([]);
   const creator =
-    Data.createdBy &&
-    Data.createdBy.data &&
-    Data.createdBy.data.attributes &&
-    Data.createdBy.data.attributes.firstname &&
-    Data.createdBy.data.attributes.lastname
-      ? Data.createdBy.data.attributes.firstname +
-        " " +
-        Data.createdBy.data.attributes.lastname
+    Data.created_by && Data.created_by.lastname
+      ? Data.created_by.firstname + " " + Data.created_by.lastname
       : "Unknown";
 
   const handleGet = async (e) => {
     const fetch = await getDoument(id);
-    const content = fetch.result.data.attributes;
+    const content = fetch.result;
     setData(content);
   };
 
@@ -44,8 +38,8 @@ function DisplaySinglePost({ props }) {
           {/* {console.log(data.category)} */}
           <h1>{Data.page_heading} </h1>
           <div className="meta-info">
-            <h3>Creation date: {Data.createdAt}</h3>
-            <h3>Last updated: {Data.updatedAt}</h3>
+            <h3>Creation date: {Data.created_at}</h3>
+            <h3>Last updated: {Data.updated_at}</h3>
           </div>
 
           {Data.content_blocks?.map((contentItem, index) => (
@@ -56,10 +50,7 @@ function DisplaySinglePost({ props }) {
                 {contentItem.__component === "content.image-content" && (
                   <div>
                     <img
-                      src={
-                        "http://localhost:1337" +
-                        contentItem.Image_content.data.attributes.url
-                      }
+                      src={`http://192.168.88.201:8080${contentItem.Image_content.url}`}
                       alt="Image"
                     />
                   </div>
@@ -68,10 +59,7 @@ function DisplaySinglePost({ props }) {
                   <div>
                     <h4>{contentItem.Image_heading}</h4>
                     <img
-                      src={
-                        "http://localhost:1337" +
-                        contentItem.Image_content.data.attributes.url
-                      }
+                      src={`http://192.168.88.201:8080${contentItem.Image_content[0].url}`}
                       alt="Image"
                     />
                     <h4>{contentItem.text_heading}</h4>
@@ -84,7 +72,7 @@ function DisplaySinglePost({ props }) {
                 {contentItem.__component === "content.text-content" && (
                   <div>
                     <h4>{contentItem.heading}</h4>
-                    <p>{contentItem.text_content[0].children[0].text}</p>
+                    <p>{contentItem.text_content}</p>
                   </div>
                 )}
               </div>

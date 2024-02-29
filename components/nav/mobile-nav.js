@@ -50,7 +50,7 @@ export default function MobileNav({ props }) {
           <DashboardIcon></DashboardIcon>
           <p>Components</p>
         </Link>
-        <Link className="nav-link" href="/createpost">
+        <Link className="nav-link" href="http://192.168.88.201:8080/admin/auth/login">
           <AddBoxIcon></AddBoxIcon>
           <p>Create</p>
         </Link>

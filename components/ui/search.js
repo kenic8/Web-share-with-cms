@@ -7,8 +7,8 @@ export default function Search(props) {
   let matcharr = [];
   let element;
   let queryData = [];
-  console.log(props.data.result.data)
-  let data = [...props.data.result.data];
+  console.log(props.data.result)
+  let data = [...props.data.result];
   const changeQuery = props.query;
   useEffect(() => {
     changeQuery(queryData);
@@ -21,14 +21,14 @@ export default function Search(props) {
 
     let searchResults = data.filter((elm) => {
       console.log(elm)
-      let wordArr = elm.attributes.page_heading
+      let wordArr = elm.page_heading
         .toLowerCase()
         .split(" ")
         .filter((str) => str !== "");
       // console.log(elm.data.tags);
       element = elm;
-      console.log(typeof elm.attributes.page_tags[0].meta_tags)
-      const tagarray = elm.attributes.page_tags[0].meta_tags.split(" ");
+      console.log(typeof elm.page_tags.meta_tags)
+      const tagarray = elm.page_tags.meta_tags.split(" ");
      return  wordArr.some(item => matcharr.includes(item) || tagarray.some(tag => matcharr.includes(tag)));
     });
     // console.log(searchResults.length);

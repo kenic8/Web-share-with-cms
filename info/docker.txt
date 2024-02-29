@@ -8,6 +8,7 @@ Ls : docker ps -n 5    --> list containers
 docker rmi $(docker images -a -q) - images
 docker rm $(docker ps -a -q)   - containers 
 docker stop $(docker ps -q)
+docker exec -it strapi bash
 
 
 
