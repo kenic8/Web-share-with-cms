@@ -33,7 +33,6 @@ function DisplayPost({ props }) {
 
             console.log( "iam item", contentItem),
             <div key={index}>
-              <h3> Section {index + 1}</h3>
 
               <div key={index}>
                 {contentItem.__component === "content.image-content" && (

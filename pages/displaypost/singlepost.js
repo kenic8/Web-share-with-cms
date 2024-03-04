@@ -38,13 +38,13 @@ function DisplaySinglePost({ props }) {
           {/* {console.log(data.category)} */}
           <h1>{Data.page_heading} </h1>
           <div className="meta-info">
-            <h3>Creation date: {Data.created_at}</h3>
-            <h3>Last updated: {Data.updated_at}</h3>
+            <h5>Creation date: {Data.created_at}</h5>
+            <h5>Last updated: {Data.updated_at}</h5>
           </div>
 
           {Data.content_blocks?.map((contentItem, index) => (
             <div key={index}>
-              <h3> Section {index + 1}</h3>
+            
 
               <div key={index}>
                 {contentItem.__component === "content.image-content" && (
@@ -57,12 +57,12 @@ function DisplaySinglePost({ props }) {
                 )}
                 {contentItem.__component === "content.image-text-content" && (
                   <div>
-                    <h4>{contentItem.Image_heading}</h4>
+                    <h3>{contentItem.Image_heading}</h3>
                     <img
                       src={`http://192.168.88.201:8080${contentItem.Image_content[0].url}`}
                       alt="Image"
                     />
-                    <h4>{contentItem.text_heading}</h4>
+                    <h3>{contentItem.text_heading}</h3>
                     <p>{contentItem.text_content}</p>
                     <div>
                       <p>{contentItem.content}</p>

@@ -27,14 +27,15 @@ export default function Search(props) {
         .filter((str) => str !== "");
       // console.log(elm.data.tags);
       element = elm;
-      console.log(typeof elm.page_tags.meta_tags)
+      console.log( elm.page_tags.meta_tags)
       const tagarray = elm.page_tags.meta_tags.split(" ");
      return  wordArr.some(item => matcharr.includes(item) || tagarray.some(tag => matcharr.includes(tag)));
     });
     // console.log(searchResults.length);
     ///puhser elm arr
-    if (searchResults.length != 0 && v != "") {
+    if (searchResults.length != 0 && v != " ") {
       console.log("pushed");
+      console.log("string" , v )
       searchResults.forEach((element) => {
         f.push(element);
       });

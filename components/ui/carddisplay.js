@@ -24,6 +24,9 @@ export default function Carddisplay({ props }) {
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">
+                {props.page_category}
+              </Typography>
+              <Typography variant="h6" color="text.secondary">
                 {props.page_heading}
               </Typography>
               <Typography
@@ -35,9 +38,7 @@ export default function Carddisplay({ props }) {
                 {props.created_by.firstname + " " + props.created_by.lastname}
               </Typography>
 
-              <Typography variant="h6" color="text.secondary">
-                {props.page_category}
-              </Typography>
+           
               <div className="card-flex-button">
                 {props.page_tags.meta_tags &&
                   props.page_tags.meta_tags.includes("kode") && (
