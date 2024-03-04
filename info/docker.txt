@@ -11,8 +11,23 @@ docker stop $(docker ps -q)
 docker exec -it strapi bash
 
 
+--------------------------------------------------------------------------
+
+DB login :
 
 Db: Root + "naspassword"
+
+
+---------------------------------------------------------------------------
+https://hub.docker.com/repository/docker/kenic8/cmsdb/general  --> REPO
+
+------------------------------------------------------------------------
+ how to push:
+
+docker tag strapi/strapi:latest kenic8/cms:latest
+
+docker push kenic8/cms:latest
+-------------------------------------------------------------------
 
 
 
@@ -21,6 +36,8 @@ https://refine.dev/blog/docker-list-containers/#conclusion
 https://docs.docker.com/engine/reference/commandline/container_logs/
 
 
+-------------------------------------------------------------------------------------------
+Bash in docker :
 
 Openbash :  docker exec -it latest  bash
 
