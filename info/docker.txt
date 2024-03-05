@@ -34,6 +34,7 @@ docker push kenic8/cms:latest
 https://refine.dev/blog/docker-list-containers/#conclusion
 
 https://docs.docker.com/engine/reference/commandline/container_logs/
+https://forums.docker.com/t/denied-requested-access-to-the-resource-is-denied/49693/2
 
 
 -------------------------------------------------------------------------------------------

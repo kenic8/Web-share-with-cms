@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.4",
     "@mui/material": "^5.15.4",
+    "@mui/x-data-grid": "^6.19.6",
     "firebase": "^10.8.0",
     "firestore": "^1.1.6",
     "git": "^0.1.5",

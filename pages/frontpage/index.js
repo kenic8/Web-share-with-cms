@@ -4,6 +4,9 @@ import Carddisplay from "@/components/ui/carddisplay";
 import { useEffect, useState } from "react";
 import Search from "@/components/ui/search";
 import CircularProgress from "@mui/material/CircularProgress";
+import WindowIcon from "@mui/icons-material/Window";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import Link from "next/link";
 
 ///get data from search
 
@@ -55,10 +58,28 @@ export default function FrontPage() {
           </div>
 
           <div className="frontpage-grid">
+            <div className="toggle-view">
+              <h5 className="view-heading">Grid/Row</h5>
+
+              <div>
+                <Link className="toggle-link" href={"http://localhost:3000/frontpage/"}>
+                  <WindowIcon></WindowIcon>
+                </Link>
+                <Link className="toggle-link" href={"http://localhost:3000/frontpage/gridview"}>
+                  <FormatListNumberedIcon></FormatListNumberedIcon>
+                </Link>
+              </div>
+            </div>
             <h2 className="center-h1">Alle eksempler</h2>
+
             {Data.result.map((element) => {
-            
-              return <Carddisplay key={element.id} props={element} id={element.id}></Carddisplay>;
+              return (
+                <Carddisplay
+                  key={element.id}
+                  props={element}
+                  id={element.id}
+                ></Carddisplay>
+              );
             })}
 
             {/* {console.log(Data.result.data)} */}

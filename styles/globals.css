@@ -472,6 +472,27 @@ input[type='checkbox'] {
 }
 
 .frontpage-grid {
+
+  .toggle-view {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    svg{
+    width: 1em;
+    height: 1em;
+    font-size: 1.5em;
+    padding:  0 3px 2%;
+
+    .view-heading{
+      width: 100%;
+    }
+    }
+  
+  }
+
   padding: 5% 15% 5%;
   display: flex;
   flex-wrap: wrap;
@@ -490,6 +511,9 @@ input[type='checkbox'] {
       text-overflow: ellipsis;
       overflow: hidden;
     }
+
+      
+
 
     .card-flex-button {
       border-top: solid;
