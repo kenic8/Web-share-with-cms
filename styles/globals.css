@@ -455,7 +455,35 @@ input[type='checkbox'] {
   }
 
 
+.big-imagesearch{
+  display: flex;
+  width: 100%;
+}
+.gallery-search{
+  top:7%
+}
+.image-gallery-filters{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25%;
+  z-index: 99999;
+  background-color: #158B7C;
+  
 
+  div{
+    display: flex;
+    flex-direction: row;
+    margin-top:100px;
+    button{
+      width: 20%;
+    }
+  }
+ 
+}
 
 }
 
@@ -471,7 +499,82 @@ input[type='checkbox'] {
   display: flex;
 }
 
+
+
+
+.button-grid{
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: #1615158c;
+  height: 100%;
+  width:100%;
+  display: flex;
+  opacity: 0;
+
+  .b-right{
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 5% 0;
+
+    svg{
+      background-color: #111111a1;
+      font-size: 2em;
+      padding: 5%;
+      border-radius: 6px;
+    }
+    .svg-down{
+      color: #F7B529;
+    }
+    .svg-like{
+      color: #e6dddb;
+    }
+    
+  }
+
+ 
+
+ 
+ 
+
+  
+}
+
+.image-card:hover .button-grid{
+  opacity: 1!important;
+  transition: 250ms;
+  
+}
+
+.image-card{
+  text-decoration: none;
+  padding: 1%;
+  max-width: 10%;
+  min-width: 250px;
+  position: relative;
+  
+
+
+  p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+
 .frontpage-grid {
+
+  padding: 5% 15% 5%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  min-width: 400px;
 
   .toggle-view svg:hover{
     transform: scale(1.2);
@@ -498,12 +601,7 @@ input[type='checkbox'] {
   
   }
 
-  padding: 5% 15% 5%;
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  justify-content: center;
-  min-width: 400px;
+
 
   .post-link {
     text-decoration: none;
@@ -517,6 +615,8 @@ input[type='checkbox'] {
       overflow: hidden;
     }
 
+
+   
       
 
 

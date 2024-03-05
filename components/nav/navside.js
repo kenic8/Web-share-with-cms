@@ -4,6 +4,7 @@ import { useAuthContext } from "@/firebase/auth/authcontext";
 import HomeIcon from "@mui/icons-material/Home";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import ArtTrackIcon from "@mui/icons-material/ArtTrack";
+import CollectionsIcon from '@mui/icons-material/Collections';
 import LoginIcon from "@mui/icons-material/Login";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -58,6 +59,10 @@ export default function Navside({ children }) {
             <HomeIcon></HomeIcon>
             <p>Home</p>
           </Link>
+          <Link className="nav-link" href="/gallery">
+          <CollectionsIcon></CollectionsIcon>
+          <p>Galleri</p>
+        </Link>
           <Link className="nav-link" href="/frontpage">
             <RemoveRedEyeIcon></RemoveRedEyeIcon>
             <p>Oversigt</p>
@@ -66,6 +71,7 @@ export default function Navside({ children }) {
             <DashboardIcon></DashboardIcon>
             <p>Components</p>
           </Link>
+         
           {/* <Link className="nav-link" href="/createpost">
             <AddBoxIcon></AddBoxIcon>
             <p>Create</p>

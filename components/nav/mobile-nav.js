@@ -46,6 +46,10 @@ export default function MobileNav({ props }) {
           <RemoveRedEyeIcon></RemoveRedEyeIcon>
           <p>Oversigt</p>
         </Link>
+        <Link className="nav-link" href="/frontpage">
+          <RemoveRedEyeIcon></RemoveRedEyeIcon>
+          <p>Oversigt</p>
+        </Link>
         <Link className="nav-link" href="/components">
           <DashboardIcon></DashboardIcon>
           <p>Components</p>
