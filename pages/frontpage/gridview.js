@@ -98,13 +98,13 @@ export default function Gridview() {
               <div>
                 <Link
                   className="toggle-link"
-                  href={"http://localhost:3000/frontpage/gridview"}
+                  href={"http://localhost:3000/frontpage/"}
                 >
                   <WindowIcon></WindowIcon>
                 </Link>
                 <Link
                   className="toggle-link"
-                  href={"http://localhost:3000/frontpage/"}
+                  href={"http://localhost:3000/frontpage/gridview"}
                 >
                   <FormatListNumberedIcon></FormatListNumberedIcon>
                 </Link>
