@@ -473,18 +473,23 @@ input[type='checkbox'] {
 
 .frontpage-grid {
 
+  .toggle-view svg:hover{
+    transform: scale(1.2);
+    transition: 200ms;
+  }
+  
   .toggle-view {
     flex-direction: column;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    align-items: flex-end;
+    justify-content: flex-end;
     width: 100%;
-    svg{
-    width: 1em;
-    height: 1em;
+    
+    svg,a{
+    width: 25px;
+    height: 25px;
     font-size: 1.5em;
-    padding:  0 3px 2%;
+    padding:  0 1px 2%;
 
     .view-heading{
       width: 100%;
