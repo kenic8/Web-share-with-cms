@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-      
+         
         <div className="frontpage-content">
           <div className="frontpage-left">
             <h1>Moodlewebshare</h1>

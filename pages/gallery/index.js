@@ -8,6 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import WindowIcon from "@mui/icons-material/Window";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import Link from "next/link";
+import { inputLabelClasses } from "@mui/material/InputLabel";
 import {
   Stack,
   OutlinedInput,
@@ -44,17 +45,13 @@ export default function Gallery() {
   }, []);
 
   const names = [
-    "Humaira Sims",
-    "Santiago Solis",
-    "Dawid Floyd",
-    "Mateo Barlow",
-    "Samia Navarro",
-    "Kaden Fields",
-    "Genevieve Watkins",
-    "Mariah Hickman",
-    "Rocco Richardson",
-    "Harris Glenn",
+    "quiz",
+    "kode",
+    "interaktiv",
+    
   ];
+
+  const style = {};
 
   if (user != null) {
     whoami = user["email"];
@@ -84,37 +81,7 @@ export default function Gallery() {
             <Search data={Data} query={changeQuery}></Search>
           </div> */}
 
-          <div className="frontpage-grid">
-            <div className="image-gallery-filters">
-              <div className="filter-section-1">
-                <button> hej </button>
-                <button> fafsaf</button>
-                <button> saffsa</button>
-                <button> fafsaf</button>
-              </div>
-              <button> saffsa</button>
-              <button> fafsaf</button>
-              <button> saffsa</button>
-              <button> fafsaf</button>
-              <button> saffsa</button>
-              <div className="filter-section-2">
-                <button> fafsaf</button>
-                <button> saffsa</button>
-                <button> fafsaf</button>
-                <button> saffsa</button>
-                <button> fafsaf</button>
-              </div>
-              <div
-                className="filet-section-3
-              "
-              >
-                <button> saffsa</button>
-                <button> fafsaf</button>
-                <button> saffsa</button>
-                <button> fafsaf</button>
-                <button> saffsa</button>
-              </div>
-            </div>
+          <div className="frontpage-grid-gallery">
             <div className="big-imagesearch">
               <Autocomplete
                 sx={{ m: 1, width: 500 }}
@@ -132,15 +99,23 @@ export default function Gallery() {
                     {...props}
                   >
                     {option}
-                    {selected ? <CheckIcon color="info" /> : null}
+                    {selected ? <CheckIcon color="#158B7C" /> : null}
                   </MenuItem>
                 )}
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    InputLabelProps={{
+                      sx: {
+                        color: "#158B7C",
+                        [`&.${inputLabelClasses.focused}`]: {
+                          color: "#158B7C",
+                        },
+                      },
+                    }}
                     variant="outlined"
                     label="Tags"
-                    placeholder="Favorites"
+                    placeholder="Vælg tags"
                   />
                 )}
               />
@@ -148,36 +123,73 @@ export default function Gallery() {
               <TextField
                 className="gallery-search"
                 id="outlined-basic"
-                label="Search"
+                label="Hvad mangler du?"
                 variant="outlined"
                 fullWidth={true}
+                InputLabelProps={{
+                  sx: {
+
+                    "& .MuiOutlinedInput-root": {
+                      borderColor: "#158B7C",
+                      "&  MuiInputLabel-root": { color: "#158B7C" },
+                      "&.Mui-focused fieldset": {
+        
+                        color: "#158B7C",
+                      }
+                    },
+                    [`&.${inputLabelClasses.focused}`]: {
+                      color: "#158B7C",
+                     
+                    },
+                  },
+                }}
               />
             </div>
 
-            {/* <div className="toggle-view">
-              <h5 className="view-heading">Grid/Row</h5>
-              <div>
-                <Link className="toggle-link" href={"http://localhost:3000/frontpage/"}>
-                  <WindowIcon></WindowIcon>
-                </Link>
-                <Link className="toggle-link" href={"http://localhost:3000/frontpage/gridview"}>
-                  <FormatListNumberedIcon></FormatListNumberedIcon>
-                </Link>
+            <div className="image-grid">
+              {Data.result.map((element) => {
+                return (
+                  <Galleryimage
+                    key={element.id}
+                    props={element}
+                    id={element.id}
+                  ></Galleryimage>
+                );
+              })}
+
+              {/* {console.log(Data.result.data)} */}
+            </div>
+            <div className="image-gallery-filters">
+              <div className="content-wrapper-filters">
+                <h3> Filter muligheder</h3>
+                <div className="filter-applied">
+                  <h4>Aktive filtre</h4>
+                  <div className="filter-section-1">
+                    <button className="button-a"> Red </button>
+                    <button className="button-a"> SVG</button>
+                    <button className="button-a"> RAW</button>
+                  </div>
+                </div>
+                <div className=" asset-type">
+                  <h4>Type</h4>
+                  <div className="filter-section-2">
+                    <button className="button-b">Video</button>
+                    <button className="button-b"> Icons</button>
+                    <button className="button-b"> Photo</button>
+                  </div>
+                </div>
+                <div className="file-type">
+                  <h4>Fil Type</h4>
+                  <div className="filter-section-3">
+                    <button className="button-c"> JPG</button>
+                    <button className="button-c"> AI</button>
+                    <button className="button-c"> EPS</button>
+                    <button className="button-c"> PNG</button>
+                    <button className="button-c"> RAW</button>
+                  </div>
+                </div>
               </div>
-            </div> */}
-            <h2 className="center-h1">Alle billeder</h2>
-
-            {Data.result.map((element) => {
-              return (
-                <Galleryimage
-                  key={element.id}
-                  props={element}
-                  id={element.id}
-                ></Galleryimage>
-              );
-            })}
-
-            {/* {console.log(Data.result.data)} */}
+            </div>
           </div>
         </>
       );
