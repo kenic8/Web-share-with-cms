@@ -62,10 +62,10 @@ export default function FrontPage() {
               <h5 className="view-heading">Grid/Row</h5>
 
               <div>
-                <Link className="toggle-link" href={"http://localhost:3000/frontpage/"}>
+                <Link className="toggle-link" href={"/frontpage/"}>
                   <WindowIcon></WindowIcon>
                 </Link>
-                <Link className="toggle-link" href={"http://localhost:3000/frontpage/gridview"}>
+                <Link className="toggle-link" href={"/frontpage/gridview"}>
                   <FormatListNumberedIcon></FormatListNumberedIcon>
                 </Link>
               </div>
