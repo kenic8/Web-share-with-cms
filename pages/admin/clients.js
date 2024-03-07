@@ -35,7 +35,7 @@ export default function Clients() {
         headerName: "userlink",
         width: 200,
         renderCell: (link) => (
-          <Link href={`http://localhost:3000/admin/singleclient?id=${link.value}`}>Go to user</Link>
+          <Link href={`/admin/singleclient?id=${link.value}`}>Go to user</Link>
         ),
         editable: false,
       },
@@ -67,7 +67,7 @@ export default function Clients() {
               <div>
                 <Link
                   className="toggle-link"
-                  href={`http://localhost:3000/admin/adminsignup?id=${user.uid}`}
+                  href={`/admin/adminsignup?id=${user.uid}`}
                   query={user.id}
                 
                 >
