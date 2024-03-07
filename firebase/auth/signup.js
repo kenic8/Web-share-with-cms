@@ -1,5 +1,6 @@
 import { firebase_app, firestore, ref, uploadBytesResumable } from "../config";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { clientMangeradd } from "../database/clientmanager";
 
 const auth = getAuth(firebase_app);
 
@@ -18,7 +19,6 @@ export default async function signUp(email, password, image) {
   };
   try {
     result = await createUserWithEmailAndPassword(auth, email, password);
-
     // console.log(result);
     if (image) {
       console.log(firestoredb);
@@ -32,6 +32,28 @@ export default async function signUp(email, password, image) {
       console.log(imagesRef);
       upload(imagesRef, image, metadata);
     }
+
+    ///createuserdoc in storage with
+  } catch (e) {
+    error = e;
+  }
+
+  return { result, error };
+}
+
+export async function adminsignUp(email, password, clientowner) {
+  [];
+
+  let result = null,
+    error = null;
+
+  try {
+    result = await createUserWithEmailAndPassword(auth, email, password);
+      if (result) {
+        clientMangeradd(clientowner, result.user.uid,email);
+      }
+
+    ///createuserdoc in storage with
   } catch (e) {
     error = e;
   }
