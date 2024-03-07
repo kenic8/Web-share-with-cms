@@ -85,7 +85,7 @@ export default function Navside({ children }) {
             <AddBoxIcon></AddBoxIcon>
             <p>Create</p>
           </Link>
-          <Link className="nav-link" href="http://localhost:3000/admin/clients">
+          <Link className="nav-link" href="/admin/clients">
             <AdminPanelSettingsIcon></AdminPanelSettingsIcon>
             <p>Admin</p>
           </Link>
