@@ -1,27 +1,17 @@
 import { useAuthContext } from "@/firebase/auth/authcontext";
 import getDoument from "@/firebase/database/getdata";
-import Carddisplay from "@/components/ui/carddisplay";
 import Galleryimage from "@/components/ui/galleryimage";
 import { useEffect, useState } from "react";
 import Search from "@/components/ui/search";
 import CircularProgress from "@mui/material/CircularProgress";
-import WindowIcon from "@mui/icons-material/Window";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import Link from "next/link";
 import { inputLabelClasses } from "@mui/material/InputLabel";
+
 import {
-  Stack,
-  OutlinedInput,
-  InputLabel,
   MenuItem,
-  Chip,
-  Select,
-  FormControl,
   Autocomplete,
   TextField,
 } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
-import CancelIcon from "@mui/icons-material/Cancel";
 
 ///get data from search
 
@@ -45,18 +35,15 @@ export default function Gallery() {
   }, []);
 
   const names = [
-    "quiz",
-    "kode",
+    "s",
     "interaktiv",
-    
+    "quiz",
   ];
-
-  const style = {};
 
   if (user != null) {
     whoami = user["email"];
     if (Data.result != null) {
-      console.log(Data.result);
+      // console.log(Data.result);
       if (Query.length != 0) {
         return (
           <>
@@ -153,6 +140,8 @@ export default function Gallery() {
                     key={element.id}
                     props={element}
                     id={element.id}
+                    user={user}
+
                   ></Galleryimage>
                 );
               })}

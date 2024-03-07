@@ -6,17 +6,14 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 export default function Carddisplay({ props }) {
-  // console.log("hej", props.attributes.page_tags[0].meta_tags);
-  // let link = "/updatepost?id=" + props.id;
 
-  console.log(props)
+  // let link = "/updatepost?id=" + props.id;
   let link = "/displaypost/singlepost?id=" + props.id;
   return (
     <>
       <Link className="post-link" href={link} props={props}>
         <Card sx={{ maxWidth: 4/4 }}>
           <CardActionArea>
-          
             <CardMedia
               sx={{ height: 220 }}
               image={`http://192.168.88.201:8080${props.page_teaser.url}`}

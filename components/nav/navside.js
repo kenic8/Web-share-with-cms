@@ -65,11 +65,11 @@ export default function Navside({ children }) {
         </Link>
           <Link className="nav-link" href="/frontpage">
             <RemoveRedEyeIcon></RemoveRedEyeIcon>
-            <p>Oversigt</p>
+            <p>Opslag</p>
           </Link>
           <Link className="nav-link" href="/components">
             <DashboardIcon></DashboardIcon>
-            <p>Components</p>
+            <p>Kategorier</p>
           </Link>
          
           {/* <Link className="nav-link" href="/createpost">

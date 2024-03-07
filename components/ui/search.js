@@ -7,7 +7,7 @@ export default function Search(props) {
   let matcharr = [];
   let element;
   let queryData = [];
-  console.log(props.data.result)
+  // console.log(props.data.result)
   let data = [...props.data.result];
   const changeQuery = props.query;
   useEffect(() => {

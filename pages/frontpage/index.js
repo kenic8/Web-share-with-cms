@@ -32,7 +32,7 @@ export default function FrontPage() {
   if (user != null) {
     whoami = user["email"];
     if (Data.result != null) {
-      console.log(Data.result);
+      // console.log(Data.result);
       if (Query.length != 0) {
         return (
           <>

@@ -4,9 +4,22 @@ import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import { likeImage } from "@/firebase/database/imagelike";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import { removeLikedImage } from "@/firebase/database/imagelike";
 
-export default function Galleryimage({ props }) {
+export default function Galleryimage({ props, user }) {
+  console.log(user);
   let link = "/displaypost/singlepost?id=" + props.id;
+
+  const handleClicklike = (user) => {
+    likeImage(user.uid, props.id);
+  };
+  const handleClickdislike = (user) => {
+    console.log(user);
+    removeLikedImage(user.uid, props.id);
+  };
+
   return (
     <>
       <div className="image-card">
@@ -18,7 +31,14 @@ export default function Galleryimage({ props }) {
             />
             <div className="button-grid ">
               <div className="b-right">
-                <FavoriteIcon className="svg-like"></FavoriteIcon>
+                <FavoriteIcon
+                  onClick={() => handleClicklike(user)}
+                  className="svg-like"
+                ></FavoriteIcon>
+                <ThumbDownIcon
+                  onClick={() => handleClickdislike(user)}
+                  className="svg-like"
+                ></ThumbDownIcon>
                 <FileDownloadIcon className="svg-down"></FileDownloadIcon>
               </div>
             </div>
