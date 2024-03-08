@@ -23,7 +23,7 @@ export async function likeImage(userId, imageId) {
 
     // Update the document with the merged likedImages array
     const data = { likedImages: currentLikedImages };
-    const result = await setDoc(userDocRef, data);
+    const result = await setDoc(userDocRef, data,{merge:true});
 
     return result;
   } catch (e) {
@@ -64,7 +64,7 @@ export async function removeLikedImage(userId, imageId) {
   
         console.log("after", updatedLikedImages);
         const data = { likedImages: updatedLikedImages };
-        const result = await setDoc(userDocRef, data);
+        const result = await setDoc(userDocRef, data,{merge:true});
   
         return result;
       } else {

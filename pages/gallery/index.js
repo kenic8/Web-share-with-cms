@@ -70,7 +70,7 @@ export default function Gallery() {
 
           <div className="frontpage-grid-gallery">
             <div className="big-imagesearch">
-              <Autocomplete
+              {/* <Autocomplete
                 sx={{ m: 1, width: 500 }}
                 multiple
                 id="tags-standard"
@@ -105,7 +105,7 @@ export default function Gallery() {
                     placeholder="Vælg tags"
                   />
                 )}
-              />
+              /> */}
 
               <TextField
                 className="gallery-search"

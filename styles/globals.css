@@ -676,7 +676,6 @@ background-color: #23314d;
 
 .frontpage-grid {
 
-
     
   .remove-icon{
     transition: 200ms;
@@ -689,6 +688,8 @@ background-color: #23314d;
      }
    
   }
+
+
 
   padding: 5% 15% 5%;
   display: flex;
@@ -1056,4 +1057,23 @@ background-color: #23314d;
 
 
 }
+
+.clientpage-nav{
+ 
+  width: 100%;
+border-bottom: solid;
+border-color: #158b7b05;
+border-width: 1px;
+display: flex;
+justify-content: center;
+align-items: baseline;
+
+.clientpage-icon-wrap{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+}
+}
+
 

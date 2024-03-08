@@ -43,7 +43,7 @@ function Page() {
       <div className="wrapper">
         <div className="form-wrapper-signin">
           <form onSubmit={handleForm} className="form">
-            <h1>Opret en konto</h1>
+            <h1>Opret en konto " Creator konto " </h1>
 
             <input
               onChange={(e) => setEmail(e.target.value)}

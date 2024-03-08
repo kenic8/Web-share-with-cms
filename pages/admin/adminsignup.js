@@ -31,7 +31,9 @@ function Adminsignup() {
       <div className="wrapper">
         <div className="form-wrapper-signin">
           <form onSubmit={handleForm} className="form">
-            <h1> {ownerid} invitere dig til at Oprette en konto</h1>
+            <h1> Velkommen!</h1>
+            <h2> Opret dit login </h2>
+            <p> Dit ID : {ownerid}</p>
 
             <input
               onChange={(e) => setEmail(e.target.value)}

@@ -1,6 +1,7 @@
 import { firebase_app, firestore, ref, uploadBytesResumable } from "../config";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { clientMangeradd } from "../database/clientmanager";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const auth = getAuth(firebase_app);
 
@@ -46,12 +47,24 @@ export async function adminsignUp(email, password, clientowner) {
 
   let result = null,
     error = null;
-
+    const db = getFirestore(firebase_app);
   try {
     result = await createUserWithEmailAndPassword(auth, email, password);
-      if (result) {
-        clientMangeradd(clientowner, result.user.uid,email);
-      }
+    if (result) {
+      clientMangeradd(clientowner, result.user.uid, email);
+      const data = {
+        userdata: {userid:result.user.uid,
+        email:result.user.email,
+        Userowner:clientowner, 
+        auth:"user"
+      },
+        likedImages: [],
+      };
+      //createuserdoc based on user
+      setDoc(doc(db, "users", result.user.uid), data, {
+        merge: true,
+      });
+    }
 
     ///createuserdoc in storage with
   } catch (e) {
