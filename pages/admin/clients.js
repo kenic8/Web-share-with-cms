@@ -61,17 +61,23 @@ export default function Clients() {
     },
   ];
 
+
+  
+
   if (user != null) {
     const rows = [];
+  
     async function getData() {
       const fetch = await getClients(user.uid);
       setData(fetch);
     }
-    ///datachange effect
-    useEffect(() => {
-      getData();
-    }, []);
-
+  
+         ///datachange effect
+         useEffect(() => {
+          getData();
+        }, []);
+      
+   
     whoami = user["email"];
     if (Data.result != null) {
       return (
