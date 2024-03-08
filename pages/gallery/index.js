@@ -35,7 +35,7 @@ export default function Gallery() {
   }, []);
 
   const names = [
-    "s",
+    "multiplechoice",
     "interaktiv",
     "quiz",
   ];

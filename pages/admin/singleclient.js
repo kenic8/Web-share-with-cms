@@ -1,19 +1,10 @@
 import { useAuthContext } from "@/firebase/auth/authcontext";
-import getDoument from "@/firebase/database/getdata";
-import Carddisplay from "@/components/ui/carddisplay";
 import { useEffect, useState } from "react";
-import Search from "@/components/ui/search";
 import CircularProgress from "@mui/material/CircularProgress";
-import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
-import { getClients } from "@/firebase/database/clientmanager";
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import { getClientdata } from "@/firebase/database/clientmanager";
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Link from "next/link";
-import WindowIcon from "@mui/icons-material/Window";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import { query } from "firebase/firestore";
+import { useSearchParams } from "next/navigation";
+
 
 ///get data from search
 
@@ -21,16 +12,15 @@ export default function singleClient() {
   const [Data, setData] = useState([]);
   const user = useAuthContext();
   let whoami;
-
-  
-
   const rows = [];
+  const searchParams = useSearchParams();
+  const clientid = searchParams.get("id");
 
-  
+
   ///datachange effect
   useEffect(() => {
     async function getData() {
-      const fetch = await getClients(user.uid);
+      const fetch = await getClientdata(clientid);
       setData(fetch);
     }
     getData();

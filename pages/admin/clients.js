@@ -1,19 +1,15 @@
 import { useAuthContext } from "@/firebase/auth/authcontext";
-import getDoument from "@/firebase/database/getdata";
-import Carddisplay from "@/components/ui/carddisplay";
+import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 import { useEffect, useState } from "react";
-import Search from "@/components/ui/search";
 import CircularProgress from "@mui/material/CircularProgress";
 import { DataGrid } from "@mui/x-data-grid";
-import { Button } from "@mui/material";
 import { getClients } from "@/firebase/database/clientmanager";
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Link from "next/link";
-import WindowIcon from "@mui/icons-material/Window";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import { query } from "firebase/firestore";
+import { clientMangerremove } from "@/firebase/database/clientmanager";
+import { data } from "autoprefixer";
 
 ///get data from search
 
@@ -22,40 +18,60 @@ export default function Clients() {
   const user = useAuthContext();
   let whoami;
 
+  const handleClick = async (clientid) => {
+    console.log(clientid);
+
+    const result = await clientMangerremove(user.uid, clientid);
+    if (result.clients) {
+      console.log(result.clients)
+      // If client removed successfully, update the UI
+      setData({result:result.clients});
+    }
+  };
   const columns = [
     { field: "id", headerName: "ID", width: 300 },
     {
       field: "username",
-      headerName: "username",
+      headerName: "Username",
       width: 150,
       editable: false,
     },
     {
-        field: "userlink",
-        headerName: "userlink",
-        width: 200,
-        renderCell: (link) => (
-          <Link href={`/admin/singleclient?id=${link.value}`}>Go to user</Link>
-        ),
-        editable: false,
-      },
+      field: "userlink",
+      headerName: "User link",
+      width: 100,
+      renderCell: (link) => (
+        <Link href={`/admin/singleclient?id=${link.value}`}>Go to user</Link>
+      ),
+      editable: false,
+    },
+    {
+      field: "userdelete",
+      headerName: "Delete",
+      width: 70,
+      renderCell: (link) => (
+        // <Link href={`/admin/singleclient?id=${link.value}`}>Go to user</Link>
+        <div className="remove-icon">
+          <PersonRemoveIcon
+            onClick={() => handleClick(link.value)}
+          ></PersonRemoveIcon>
+        </div>
+      ),
+      editable: false,
+    },
   ];
 
-  const rows = [];
-
-  
-  ///datachange effect
-  useEffect(() => {
+  if (user != null) {
+    const rows = [];
     async function getData() {
       const fetch = await getClients(user.uid);
       setData(fetch);
     }
-    getData();
-  }, []);
+    ///datachange effect
+    useEffect(() => {
+      getData();
+    }, []);
 
-  if (user != null) {
-
-    console.log(Data)
     whoami = user["email"];
     if (Data.result != null) {
       return (
@@ -69,7 +85,6 @@ export default function Clients() {
                   className="toggle-link"
                   href={`/admin/adminsignup?id=${user.uid}`}
                   query={user.id}
-                
                 >
                   <PersonAddIcon></PersonAddIcon>
                 </Link>
@@ -94,18 +109,16 @@ export default function Clients() {
               />
             </Box>
             {Data.result.map((element) => {
-
               console.log("element");
               const itemobj = {
                 id: element.clientId,
-                username:element.clientEmail,
-                userlink:element.clientId
-                
+                username: element.clientEmail,
+                userlink: element.clientId,
+                userdelete: element.clientId,
               };
               rows.push(itemobj);
             })}
           </div>
-         
         </>
       );
     } else {

@@ -676,6 +676,20 @@ background-color: #23314d;
 
 .frontpage-grid {
 
+
+    
+  .remove-icon{
+    transition: 200ms;
+    svg{
+      color: gray;
+    }
+    svg:hover{
+      color: red;
+     
+     }
+   
+  }
+
   padding: 5% 15% 5%;
   display: flex;
   flex-wrap: wrap;
@@ -724,7 +738,9 @@ background-color: #23314d;
 
 
    
-      
+    
+  
+   
 
 
     .card-flex-button {
@@ -1040,3 +1056,4 @@ background-color: #23314d;
 
 
 }
+
