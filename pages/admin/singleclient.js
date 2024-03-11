@@ -10,7 +10,11 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import GroupsIcon from '@mui/icons-material/Groups';
+import GroupsIcon from "@mui/icons-material/Groups";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import PermIdentityIcon from "@mui/icons-material/PermIdentity";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 
 ///get data from search
 
@@ -71,13 +75,13 @@ export default function singleClient() {
   }, []);
 
   if (user != null) {
-    console.log(Data);
     whoami = user["email"];
     if (Data.result != null) {
       return (
         <>
           <div className="frontpage-grid">
-            <h1> Single Profile</h1>
+            {console.log(Data.result)}
+            <h1> {Data.result.userdata.email} </h1>
             <Box sx={{ width: "100%" }}>
               <Box sx={{ borderBottom: 1, borderColor: "#158b7b10" }}>
                 <Tabs
@@ -87,16 +91,53 @@ export default function singleClient() {
                   textColor="secondary"
                   indicatorColor="secondary"
                 >
-                  <Tab label={<FavoriteIcon></FavoriteIcon>} {...a11yProps(0)} ></Tab>
+                  <Tab
+                    label={<FavoriteIcon></FavoriteIcon>}
+                    {...a11yProps(0)}
+                  ></Tab>
                   <Tab label="Info" {...a11yProps(1)} />
                   <Tab label={<GroupsIcon></GroupsIcon>} {...a11yProps(2)} />
                 </Tabs>
               </Box>
               <CustomTabPanel value={value} index={0}>
                 liked images
+              
+                {Data.result.likedImages.map(function (likedimage, key = 0) {
+                  key++;
+                  // return <Galleryimage key={key} props={Query}></Galleryimage>;
+
+                  return <p>{likedimage}</p>;
+                })}
               </CustomTabPanel>
               <CustomTabPanel value={value} index={1}>
-                User info
+                <div className=" panel-sections">
+                  <div className="panel-headings">
+                    {<AlternateEmailIcon></AlternateEmailIcon>}
+                    <h3> Email </h3>
+                  </div>
+                  <p> {Data.result.userdata.email}</p>
+                </div>
+                <div className=" panel-sections">
+                  <div className="panel-headings">
+                    {<PermIdentityIcon></PermIdentityIcon>}
+                    <h3> UID </h3>
+                  </div>
+                  <p>{Data.result.userdata.userid} </p>
+                </div>
+                <div className=" panel-sections">
+                  <div className="panel-headings">
+                    {<ManageAccountsIcon></ManageAccountsIcon>}
+                    <h3> Owner </h3>
+                  </div>
+                  <p>{Data.result.userdata.Userowner}</p>
+                </div>
+                <div className=" panel-sections">
+                  <div className="panel-headings">
+                    {<AdminPanelSettingsIcon></AdminPanelSettingsIcon>}
+                    <h3>Privileges</h3>
+                  </div>
+                  <p>{Data.result.userdata.auth}</p>
+                </div>
               </CustomTabPanel>
               <CustomTabPanel value={value} index={2}>
                 Groups

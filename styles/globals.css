@@ -1067,11 +1067,32 @@ background-color: #23314d;
 }
 .pagination{
   width: 80%;
+  margin-top: 1%;
   button{
     border-radius: 24px;
     padding: 0 30px 0;
   }
 }
+
+.panel-sections{
+  border-bottom: solid;
+  border-color: #3ca1941f;
+  border-width: 1px;
+  width: 40%;
+  p{
+    margin: 6px;
+  }
+}
+.panel-headings{
+  display: flex;
+  justify-items: flex-start;
+  align-items: center;
+  svg{
+    font-size: 1.5em;
+    padding:6px 0px 6px;
+  }
+}
+
 .clientpage-nav{
  
   width: 100%;

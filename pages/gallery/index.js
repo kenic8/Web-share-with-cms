@@ -33,7 +33,7 @@ export default function Gallery() {
   }, []);
 
   const handlePage = async function (e,p){
-    let offset = 12
+    let offset;
     if( p == 1 ){
       offset = 0
     } else {
