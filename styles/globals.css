@@ -159,9 +159,19 @@ main {
   align-items: center;
   height: 100%;
 
+  h5{
+    margin: 0;
+    padding:  0 0 2%;
+    text-align: left
+  }
   
 }
-
+.button-grid-modal{
+  border-bottom: solid;
+  border-color: #6c6e6e28;
+  border-width: 1px;
+  width: 100%;
+}
 .image-card-modal-image {
   flex-direction: row;
    width: 80%;
@@ -173,12 +183,26 @@ main {
     font-size: 2em;
    }
 
+   .svg-down {
+    color: #F7B529;
+  }
+
+  .svg-not-like {
+    color: #e6dddb;
+  }
+
+  .svg-like {
+    color: #e73811;
+  }
+
+
   img {
     object-fit: scale-down;
     width: 100%;
-    
     max-height: 700px;
-    min-height: 700px;
+    height: auto;
+    padding-top: 3%;
+    border-radius: 6px;
 
   }
 }

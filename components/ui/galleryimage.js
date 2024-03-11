@@ -100,10 +100,8 @@ export default function Galleryimage({ props, user, id }) {
           <Box sx={style} className="box-modal">
             <div className="image-card-modal">
               <div className="image-card-modal-image">
-                <img
-                  src={`http://192.168.88.201:8080${props.page_teaser.url}`}
-                ></img>
-                <div className="button-grid-modal ">
+              <div className="button-grid-modal ">
+                <h5>Muligheder</h5>
                   <div className="b-right">
                     <FavoriteIcon
                       onClick={() => {
@@ -118,9 +116,14 @@ export default function Galleryimage({ props, user, id }) {
                     <FileDownloadIcon className="svg-down"></FileDownloadIcon>
                   </div>
                 </div>
+                <img
+                  src={`http://192.168.88.201:8080${props.page_teaser.url}`}
+                ></img>
+             
               </div>
 
               <div className="image-card-modal-info">
+                <button>Download</button>
                 <h3>Fil type:</h3>
                 <p>EPS, JPG</p>
                 <h3>Type</h3>
