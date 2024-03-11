@@ -63,13 +63,8 @@ export default function Galleryimage({ props, user, id }) {
   return (
     <>
       <div className="image-card">
-        <Card sx={{ maxWidth: 4 / 4 }} onClick={() => handleOpen()}>
-          <CardActionArea>
-            <CardMedia
-              sx={{ height: 150 }}
-              image={`http://192.168.88.201:8080${props.page_teaser.url}`}
-            />
-            <div className="button-grid ">
+        <Card sx={{ maxWidth: 4 / 4 }} >
+        <div className="button-grid ">
               <div className="b-right">
                 <FavoriteIcon
                   onClick={() => {
@@ -84,6 +79,13 @@ export default function Galleryimage({ props, user, id }) {
                 <FileDownloadIcon className="svg-down"></FileDownloadIcon>
               </div>
             </div>
+          <CardActionArea  onClick={() => handleOpen()}>
+            <CardMedia
+              sx={{ height: 150 }}
+              image={`http://192.168.88.201:8080${props.page_teaser.url}`}
+             
+            />
+            
           </CardActionArea>
         </Card>
       </div>
