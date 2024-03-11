@@ -5,10 +5,25 @@ import { CardActionArea } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import { likeImage } from "@/firebase/database/imagelike";
-import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import { removeLikedImage } from "@/firebase/database/imagelike";
 import { getLikedImages } from "@/firebase/database/imagelike";
 import { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 900,
+  height: 800,
+  bgcolor: "background.paper",
+  border: "1px solid grey",
+  boxShadow: 24,
+  p: 4,
+};
 
 export default function Galleryimage({ props, user, id }) {
   const [liked, setLiked] = useState(false);
@@ -25,6 +40,10 @@ export default function Galleryimage({ props, user, id }) {
     removeLikedImage(user.uid, props.id);
     setLiked(false);
   };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   ///check if liked
   const isliked = async function Matchimages(user, imageid) {
@@ -44,7 +63,7 @@ export default function Galleryimage({ props, user, id }) {
   return (
     <>
       <div className="image-card">
-        <Card sx={{ maxWidth: 4 / 4 }}>
+        <Card sx={{ maxWidth: 4 / 4 }} onClick={() => handleOpen()}>
           <CardActionArea>
             <CardMedia
               sx={{ height: 150 }}
@@ -55,9 +74,9 @@ export default function Galleryimage({ props, user, id }) {
                 <FavoriteIcon
                   onClick={() => {
                     if (liked) {
-                      handleClickdislike(user)
+                      handleClickdislike(user);
                     } else {
-                      handleClicklike(user)
+                      handleClicklike(user);
                     }
                   }}
                   className={liked === true ? "svg-like" : "svg-not-like"}
@@ -67,6 +86,49 @@ export default function Galleryimage({ props, user, id }) {
             </div>
           </CardActionArea>
         </Card>
+      </div>
+
+      <div className="modal">
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style} className="box-modal">
+            <div className="image-card-modal">
+              <div className="image-card-modal-image">
+                <img
+                  src={`http://192.168.88.201:8080${props.page_teaser.url}`}
+                ></img>
+                <div className="button-grid-modal ">
+                  <div className="b-right">
+                    <FavoriteIcon
+                      onClick={() => {
+                        if (liked) {
+                          handleClickdislike(user);
+                        } else {
+                          handleClicklike(user);
+                        }
+                      }}
+                      className={liked === true ? "svg-like" : "svg-not-like"}
+                    ></FavoriteIcon>
+                    <FileDownloadIcon className="svg-down"></FileDownloadIcon>
+                  </div>
+                </div>
+              </div>
+
+              <div className="image-card-modal-info">
+                <h3>Fil type:</h3>
+                <p>EPS, JPG</p>
+                <h3>Type</h3>
+                <p>video</p>
+                <h3>tags</h3>
+                <p>Multiplechoice</p>
+              </div>
+            </div>
+          </Box>
+        </Modal>
       </div>
     </>
   );
