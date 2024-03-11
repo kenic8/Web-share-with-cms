@@ -5,12 +5,9 @@ import { useEffect, useState } from "react";
 import Search from "@/components/ui/search";
 import CircularProgress from "@mui/material/CircularProgress";
 import { inputLabelClasses } from "@mui/material/InputLabel";
+import { getLikedImages } from "@/firebase/database/imagelike";
 
-import {
-  MenuItem,
-  Autocomplete,
-  TextField,
-} from "@mui/material";
+import { MenuItem, Autocomplete, TextField } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
 ///get data from search
@@ -20,6 +17,7 @@ export default function Gallery() {
   const user = useAuthContext();
   let [Query, setQuery] = useState([]);
   let whoami;
+  let subarr = [];
 
   const changeQuery = (f) => {
     setQuery(f);
@@ -30,15 +28,26 @@ export default function Gallery() {
       const fetch = await getDoument();
       setData(fetch);
       changeQuery([]);
+      
     }
     getData();
   }, []);
 
-  const names = [
-    "multiplechoice",
-    "interaktiv",
-    "quiz",
-  ];
+  const names = ["multiplechoice", "interaktiv", "quiz"];
+
+  ///userspecific:
+
+  async function Matchimages(user, matcharr) {
+     const userimages = await getLikedImages(user)
+
+     if (userimages){
+      
+
+     }
+     console.log(user, matcharr, userimages);
+
+    
+  }
 
   if (user != null) {
     whoami = user["email"];
@@ -115,18 +124,15 @@ export default function Gallery() {
                 fullWidth={true}
                 InputLabelProps={{
                   sx: {
-
                     "& .MuiOutlinedInput-root": {
-                      borderColor: "#158B7C",
-                      "&  MuiInputLabel-root": { color: "#158B7C" },
+                      borderColor: "#042B43",
+                      "&  MuiInputLabel-root": { color: "#042B43" },
                       "&.Mui-focused fieldset": {
-        
-                        color: "#158B7C",
-                      }
+                        color: "#042B43",
+                      },
                     },
                     [`&.${inputLabelClasses.focused}`]: {
                       color: "#158B7C",
-                     
                     },
                   },
                 }}
@@ -135,24 +141,52 @@ export default function Gallery() {
 
             <div className="image-grid">
               {Data.result.map((element) => {
+                subarr.push(element.id);
+
                 return (
                   <Galleryimage
                     key={element.id}
                     props={element}
                     id={element.id}
                     user={user}
-
                   ></Galleryimage>
                 );
               })}
-
-              {/* {console.log(Data.result.data)} */}
             </div>
             <div className="image-gallery-filters">
               <div className="content-wrapper-filters">
                 <h3> Filter muligheder</h3>
                 <div className="filter-applied">
                   <h4>Aktive filtre</h4>
+                  <fieldset id="fieldset">
+                    <legend>Vælg tags</legend>
+                    <div className="tags checkbox">
+                      <label htmlFor="tagtemplate"> Html </label>
+                      <input
+                        type="checkbox"
+                        id="tagkode"
+                        name="tagtemkode"
+                        value="kode"
+                        className="switch"
+                      ></input>
+                      <label htmlFor="tagquiz"> Iteraktiv </label>
+                      <input
+                        type="checkbox"
+                        id="taginteraktiv"
+                        name="interaktiv"
+                        value="interaktiv"
+                        className="switch"
+                      ></input>
+                      <label htmlFor="tagvideo"> Multichoice </label>
+                      <input
+                        type="checkbox"
+                        id="tagmultiplechoice"
+                        name="tagmultiplechoice"
+                        value="multiplechoice"
+                        className="switch"
+                      ></input>
+                    </div>
+                  </fieldset>
                   <div className="filter-section-1">
                     <button className="button-a"> Red </button>
                     <button className="button-a"> SVG</button>

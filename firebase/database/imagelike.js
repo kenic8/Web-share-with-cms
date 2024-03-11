@@ -32,19 +32,24 @@ export async function likeImage(userId, imageId) {
 }
 
 // Function to retrieve liked images for a user
-export async function getLikedImages(userId, imageId) {
+export async function getLikedImages(userId) {
+
   try {
     const userDocRef = doc(db, "users", userId);
     const userDocSnapshot = await getDoc(userDocRef);
     const currentLikedImages = userDocSnapshot.exists()
       ? userDocSnapshot.data().likedImages || []
       : [];
-    result = currentLikedImages;
+    let  result = currentLikedImages;
     return result;
-  } catch (error) {
+  } catch (e) {
     return { error: e.message };
   }
 }
+
+
+
+
 export async function removeLikedImage(userId, imageId) {
     try {
       const userDocRef = doc(db, "users", userId);

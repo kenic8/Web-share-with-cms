@@ -11,8 +11,7 @@ const firestorref = ref;
 const upload = uploadBytesResumable;
 
 export default async function signUp(email, password, image) {
-  [];
-
+  const db = getFirestore(firebase_app);
   let result = null,
     error = null;
   const metadata = {
@@ -29,6 +28,21 @@ export default async function signUp(email, password, image) {
         firestoredb,
         `profileImages/${result.user.uid}`
       );
+      if (result){
+        const data = {
+          userdata: {
+          userid:result.user.uid,
+          email:result.user.email,
+          auth:"creator"
+        },
+          likedImages: [],
+        };
+        //createuserdoc based on user
+        setDoc(doc(db, "users", result.user.uid), data, {
+          merge: true,
+        });
+
+      }
       console.log(profileimageRef);
       console.log(imagesRef);
       upload(imagesRef, image, metadata);

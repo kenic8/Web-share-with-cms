@@ -15,7 +15,7 @@ export default function Carddisplay({ props }) {
         <Card sx={{ maxWidth: 4/4 }}>
           <CardActionArea>
             <CardMedia
-              sx={{ height: 220 }}
+              sx={{ height: 150 }}
               image={`http://192.168.88.201:8080${props.page_teaser.url}`}
               title="green iguana"
             />
