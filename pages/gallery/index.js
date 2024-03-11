@@ -33,11 +33,11 @@ export default function Gallery() {
   }, []);
 
   const handlePage = async function (e,p){
-    let offset
+    let offset = 12
     if( p == 1 ){
       offset = 0
     } else {
-       offset = 6*p 
+       offset = 12*(p-1)
     }
    
     const fetch = await getDocumentPage(offset);
