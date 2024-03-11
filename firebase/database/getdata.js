@@ -143,6 +143,9 @@ export default async function getDocument(id) {
     console.log("all");
     try {
       const response = await fetch(
+
+        ////pagination --> GET /api/your-endpoint?_start=10&_limit=10
+
         // `https://97ldj44w-1337.euw.devtunnels.ms/api/content-pages/?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
           `http://192.168.88.201:8080/content-pages`,
         {
@@ -179,6 +182,41 @@ export  async function getDocumentfilter(id) {
     try {
       const response = await fetch(
         `http://192.168.88.201:8080/content-pages/?page_category=${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      data = await response.json();
+      result = data;
+    } catch (err) {
+      error = err.message;
+    }
+
+    return { result, error };
+  } 
+
+}
+
+
+export  async function getDocumentPage(offset) {
+  let result = null;
+  let error = null;
+  let data = [];
+  console.log(offset)
+
+  if (offset != null) {
+    console.log("filter");
+    try {
+      const response = await fetch(
+        `http://192.168.88.201:8080/content-pages?_start=${offset}&_limit=12`,
         {
           method: "GET",
           headers: {

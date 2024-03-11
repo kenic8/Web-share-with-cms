@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import Search from "@/components/ui/search";
 import CircularProgress from "@mui/material/CircularProgress";
 import { inputLabelClasses } from "@mui/material/InputLabel";
-import { getLikedImages } from "@/firebase/database/imagelike";
-
-import { MenuItem, Autocomplete, TextField } from "@mui/material";
-import CheckIcon from "@mui/icons-material/Check";
+import { TextField } from "@mui/material";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
+import { getDocumentPage } from "@/firebase/database/getdata";
 
 ///get data from search
 
@@ -25,29 +25,28 @@ export default function Gallery() {
   ///datachange effect
   useEffect(() => {
     async function getData() {
-      const fetch = await getDoument();
+      const fetch = await getDocumentPage(0);
       setData(fetch);
       changeQuery([]);
-      
     }
     getData();
   }, []);
 
+  const handlePage = async function (e,p){
+    let offset
+    if( p == 1 ){
+      offset = 0
+    } else {
+       offset = 6*p 
+    }
+   
+    const fetch = await getDocumentPage(offset);
+    setData(fetch);
+  }
+
   const names = ["multiplechoice", "interaktiv", "quiz"];
 
   ///userspecific:
-
-  async function Matchimages(user, matcharr) {
-     const userimages = await getLikedImages(user)
-
-     if (userimages){
-      
-
-     }
-     console.log(user, matcharr, userimages);
-
-    
-  }
 
   if (user != null) {
     whoami = user["email"];
@@ -153,6 +152,9 @@ export default function Gallery() {
                 );
               })}
             </div>
+            <Stack className="pagination" spacing={2}>
+              <Pagination count={10} color="secondary" onChange={handlePage}  />
+            </Stack>
             <div className="image-gallery-filters">
               <div className="content-wrapper-filters">
                 <h3> Filter muligheder</h3>

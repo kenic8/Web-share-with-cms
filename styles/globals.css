@@ -684,7 +684,7 @@ background-color: #23314d;
 
 .frontpage-grid {
 
-    
+
   .remove-icon{
     transition: 200ms;
     svg{
@@ -1065,7 +1065,13 @@ background-color: #23314d;
 
 
 }
-
+.pagination{
+  width: 80%;
+  button{
+    border-radius: 24px;
+    padding: 0 30px 0;
+  }
+}
 .clientpage-nav{
  
   width: 100%;
