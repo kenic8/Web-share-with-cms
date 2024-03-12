@@ -26,9 +26,9 @@ const style = {
 };
 
 export default function Galleryimage({ props, user, id }) {
+  console.log(props)
   const [liked, setLiked] = useState(false);
   // // console.log(user);
-  let link = "/displaypost/singlepost?id=" + props.id;
 
   const handleClicklike = (user) => {
     likeImage(user.uid, props.id);

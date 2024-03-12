@@ -22,7 +22,7 @@ export default function FrontPage() {
   ///datachange effect
   useEffect(() => {
     async function getData() {
-      const fetch = await getDoument();
+      const fetch = await getDoument(null,"content-pages");
       setData(fetch);
       changeQuery([]);
     }
@@ -78,6 +78,8 @@ export default function FrontPage() {
                   key={element.id}
                   props={element}
                   id={element.id}
+                  type={"singlepost"}
+                  contenttype={"displaypost"}
                 ></Carddisplay>
               );
             })}

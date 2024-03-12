@@ -5,10 +5,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
-export default function Carddisplay({ props }) {
+export default function Carddisplay({ props,type,contenttype }) {
 
+  console.log(type)
   // let link = "/updatepost?id=" + props.id;
-  let link = "/displaypost/singlepost?id=" + props.id;
+  let link = `/${contenttype}/${type}?id=` + props.id;
   return (
     <>
       <Link className="post-link" href={link} props={props}>
@@ -17,7 +18,6 @@ export default function Carddisplay({ props }) {
             <CardMedia
               sx={{ height: 150 }}
               image={`http://192.168.88.201:8080${props.page_teaser.url}`}
-              title="green iguana"
             />
             <CardContent>
               <Typography variant="body2" color="text.secondary">

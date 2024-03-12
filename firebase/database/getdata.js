@@ -109,7 +109,7 @@ const db = getFirestore(firebase_app);
 //   return { result, error };
 // }
 
-export default async function getDocument(id) {
+export default async function getDocument(id,type) {
   let result = null;
   let error = null;
   let data = [];
@@ -119,7 +119,7 @@ export default async function getDocument(id) {
     try {
       const response = await fetch(
         // `https://97ldj44w-1337.euw.devtunnels.ms/api/content-pages/${id}?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
-        `http://192.168.88.201:8080/content-pages/${id}`,
+        `http://192.168.88.201:8080/${type}/${id}`,
         {
           method: "GET",
           headers: {
@@ -147,7 +147,7 @@ export default async function getDocument(id) {
         ////pagination --> GET /api/your-endpoint?_start=10&_limit=10
 
         // `https://97ldj44w-1337.euw.devtunnels.ms/api/content-pages/?populate[0]=content_blocks.Image_content&populate[1]=createdBy&populate[2]=page_tags`,
-          `http://192.168.88.201:8080/content-pages`,
+          `http://192.168.88.201:8080/${type}`,
         {
           method: "GET",
           headers: {
@@ -216,7 +216,7 @@ export  async function getDocumentPage(offset) {
     console.log("filter");
     try {
       const response = await fetch(
-        `http://192.168.88.201:8080/content-pages?_start=${offset}&_limit=12`,
+        `http://192.168.88.201:8080/media-galleries?_start=${offset}&_limit=12`,
         {
           method: "GET",
           headers: {

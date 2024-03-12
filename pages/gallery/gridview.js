@@ -75,7 +75,7 @@ export default function Gridview() {
   ///datachange effect
   useEffect(() => {
     async function getData() {
-      const fetch = await getDoument(null,"content-pages");
+      const fetch = await getDoument(null,"media-galleries");
       setData(fetch);
       changeQuery([]);
     }
@@ -98,13 +98,13 @@ export default function Gridview() {
               <div>
                 <Link
                   className="toggle-link"
-                  href={"http://localhost:3000/frontpage/"}
+                  href={"http://localhost:3000/gallery/"}
                 >
                   <WindowIcon></WindowIcon>
                 </Link>
                 <Link
                   className="toggle-link"
-                  href={"http://localhost:3000/frontpage/gridview"}
+                  href={"http://localhost:3000/gallery/gridview"}
                 >
                   <FormatListNumberedIcon></FormatListNumberedIcon>
                 </Link>

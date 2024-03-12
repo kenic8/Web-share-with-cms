@@ -18,7 +18,7 @@ function DisplaySinglePost({ props }) {
       : "Unknown";
 
   const handleGet = async (e) => {
-    const fetch = await getDoument(id);
+    const fetch = await getDoument(id,"content-pages");
     const content = fetch.result;
     setData(content);
   };

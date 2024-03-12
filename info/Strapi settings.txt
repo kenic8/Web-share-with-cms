@@ -1,0 +1,7 @@
+ found the solution in the documentation:
+
+need to add
+
+"populateCreatorFields": true
+
+in the file (strapi v3) /api/your-type-name/models/your-type-name.settings.json
