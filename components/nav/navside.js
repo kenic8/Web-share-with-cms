@@ -59,7 +59,7 @@ export default function Navside({ children }) {
             <HomeIcon></HomeIcon>
             <p>Home</p>
           </Link>
-          <Link className="nav-link" href="/gallery">
+          <Link className="nav-link" href="/galleries">
           <CollectionsIcon></CollectionsIcon>
           <p>Galleri</p>
         </Link>

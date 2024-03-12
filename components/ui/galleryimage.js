@@ -26,9 +26,10 @@ const style = {
 };
 
 export default function Galleryimage({ props, user, id }) {
-  console.log(props)
+  // // console.log(props)
   const [liked, setLiked] = useState(false);
   // // console.log(user);
+  console.log(props)
 
   const handleClicklike = (user) => {
     likeImage(user.uid, props.id);
@@ -53,8 +54,8 @@ export default function Galleryimage({ props, user, id }) {
 
   useEffect(() => {
     async function fetchData() {
-      const likedStatus = await isliked(user, props.id);
-      setLiked(likedStatus);
+      // const likedStatus = await isliked(user, props.id);
+      // // setLiked(likedStatus);
     }
 
     fetchData();
@@ -82,7 +83,7 @@ export default function Galleryimage({ props, user, id }) {
           <CardActionArea  onClick={() => handleOpen()}>
             <CardMedia
               sx={{ height: 150 }}
-              image={`http://192.168.88.201:8080${props.page_teaser.url}`}
+              image={`http://192.168.88.201:8080${props.url}`}
              
             />
             
@@ -117,7 +118,7 @@ export default function Galleryimage({ props, user, id }) {
                   </div>
                 </div>
                 <img
-                  src={`http://192.168.88.201:8080${props.page_teaser.url}`}
+                  src={`http://192.168.88.201:8080${props.url}`}
                 ></img>
              
               </div>

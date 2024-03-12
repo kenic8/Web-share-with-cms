@@ -9,8 +9,11 @@ import { TextField } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import { getDocumentPage } from "@/firebase/database/getdata";
+import Galleryfolders from "./galleryfolders";
 
 ///get data from search
+
+///rendering af gallerier --> gallerycontent
 
 export default function Gallery() {
   const [Data, setData] = useState([]);
@@ -137,24 +140,18 @@ export default function Gallery() {
                 }}
               />
             </div>
-
             <div className="image-grid">
-              {Data.result.map((element) => {
+             {console.log(Data.result)}
+              {Data.result[0].gallery_content.map((element) => {
+                console.log(element)
                 subarr.push(element.id);
-
                 return (
-                  <Galleryimage
-                    key={element.id}
-                    props={element}
-                    id={element.id}
-                    user={user}
-                  ></Galleryimage>
+                  <Galleryfolders foldername={element.folder_name} id={element.id} props={element.gallery_content} key={element.id} ></Galleryfolders> 
+               
                 );
               })}
             </div>
-            <Stack className="pagination" spacing={2}>
-              <Pagination count={10} color="secondary" onChange={handlePage}  />
-            </Stack>
+          
             <div className="image-gallery-filters">
               <div className="content-wrapper-filters">
                 <h3> Filter muligheder</h3>

@@ -79,7 +79,7 @@ export default function Galleries() {
                   props={element}
                   id={element.id}
                   type={"gallery"}
-                  contenttype={"gallery"}
+                  contenttype={"galleries"}
                 ></Carddisplay>
               );
             })}
