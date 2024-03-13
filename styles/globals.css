@@ -712,7 +712,7 @@ input[type='checkbox'] {
   align-items: center;
   justify-content: flex-end;
   background-color: #1615158c;
-  height: 86%;
+  height: 150px;
   width: 93%;
   border-radius: 6px;
   display: flex;
