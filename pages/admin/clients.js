@@ -41,7 +41,7 @@ export default function Clients() {
       headerName: "User link",
       width: 100,
       renderCell: (link) => (
-        <Link href={`/admin/Singleclient?id=${link.value}`}>Go to user</Link>
+        <Link href={`/admin/singleclient?id=${link.value}`}>Go to user</Link>
       ),
       editable: false,
     },

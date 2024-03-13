@@ -825,10 +825,11 @@ input[type='checkbox'] {
       width: 25px;
       height: 25px;
       font-size: 1.5em;
-      padding: 0 1px 2%;
+      
 
       .view-heading {
         width: 100%;
+        
       }
     }
 

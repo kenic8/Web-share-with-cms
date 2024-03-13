@@ -35,6 +35,7 @@ export default function Gridview() {
       width: 200,
       editable: false,
     },
+
     {
       field: "Created_at",
       headerName: "Created_at",
@@ -86,9 +87,10 @@ export default function Gridview() {
 
           <div className="frontpage-grid">
             <div className="toggle-view">
-              <h5 className="view-heading">Grid/Row</h5>
+              
 
               <div>
+              <h5 className="view-heading">Grid/Row</h5>
                 <Link
                   className="toggle-link"
                   href={"/galleries/"}
