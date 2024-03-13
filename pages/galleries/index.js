@@ -62,10 +62,10 @@ export default function Galleries() {
               <h5 className="view-heading">Grid/Row</h5>
 
               <div>
-                <Link className="toggle-link" href={"/gallery/"}>
+                <Link className="toggle-link" href={"/galleries/"}>
                   <WindowIcon></WindowIcon>
                 </Link>
-                <Link className="toggle-link" href={"/gallery/gridview"}>
+                <Link className="toggle-link" href={"/galleries/gridview"}>
                   <FormatListNumberedIcon></FormatListNumberedIcon>
                 </Link>
               </div>

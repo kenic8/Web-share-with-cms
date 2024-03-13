@@ -51,7 +51,7 @@ function a11yProps(index) {
   };
 }
 
-export default function singleClient() {
+export default function SingleClient() {
   const [Data, setData] = useState([]);
   const user = useAuthContext();
   let whoami;
@@ -104,9 +104,9 @@ export default function singleClient() {
               
                 {Data.result.likedImages.map(function (likedimage, key = 0) {
                   key++;
-                  // return <Galleryimage key={key} props={Query}></Galleryimage>;
+                  // return <Galleryimage key={key} props={Query}></Galleryimage>; --> gallery med url og ids
 
-                  return <p>{likedimage}</p>;
+                  return <p key={key}>{likedimage}</p>;
                 })}
               </CustomTabPanel>
               <CustomTabPanel value={value} index={1}>

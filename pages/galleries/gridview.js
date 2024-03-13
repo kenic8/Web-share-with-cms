@@ -31,15 +31,8 @@ export default function Gridview() {
     },
     {
       field: "Page_heading",
-      headerName: "Page_heading",
+      headerName: "Gallery name",
       width: 200,
-      editable: false,
-    },
-    {
-      field: "Category",
-      headerName: "Category",
-      type: "string",
-      width: 150,
       editable: false,
     },
     {
@@ -98,13 +91,13 @@ export default function Gridview() {
               <div>
                 <Link
                   className="toggle-link"
-                  href={"http://localhost:3000/gallery/"}
+                  href={"/galleries/"}
                 >
                   <WindowIcon></WindowIcon>
                 </Link>
                 <Link
                   className="toggle-link"
-                  href={"http://localhost:3000/gallery/gridview"}
+                  href={"/galleries/gridview"}
                 >
                   <FormatListNumberedIcon></FormatListNumberedIcon>
                 </Link>
@@ -129,12 +122,12 @@ export default function Gridview() {
               />
             </Box>
             {Data.result.map((element) => {
+              console.log(element)
               const itemobj = {
                 id: element.id,
-                Page_heading: element.page_heading,
+                Page_heading: element.gallery_heading,
                 Creator: element.created_by.firstname,
-                Category: element.page_category,
-                Link: `displaypost/singlepost?id=${element.id}`,
+                Link: `galleries/gallery?id=${element.id}`,
                 Created_at: element.created_at,
                 Updated_at: element.updated_at,
               };
