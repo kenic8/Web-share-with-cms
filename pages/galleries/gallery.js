@@ -141,12 +141,10 @@ export default function Gallery() {
               />
             </div>
             <div className="image-grid">
-             {console.log(Data.result)}
               {Data.result[0].gallery_content.map((element) => {
-                console.log(element)
                 subarr.push(element.id);
                 return (
-                  <Galleryfolders foldername={element.folder_name} id={element.id} props={element.gallery_content} key={element.id} ></Galleryfolders> 
+                  <Galleryfolders foldername={element.folder_name} id={element.id} props={element.gallery_content} key={element.id}></Galleryfolders> 
                
                 );
               })}

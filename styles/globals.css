@@ -542,9 +542,9 @@ input[type='checkbox'] {
 
   .big-imagesearch {
     display: flex;
-    width: 65%;
-    justify-content: flex-start;
-    align-items: self-start;
+    width:61%;
+    justify-content: center;
+    align-items: center;
     height: 12%;
     margin-bottom: 2%;
     padding: 17px 0px 0px;
@@ -563,6 +563,7 @@ input[type='checkbox'] {
     flex-wrap: wrap;
     width: 100%;
     border-radius: 4px;
+    min-height:625px;
 
 
   }
@@ -769,8 +770,9 @@ input[type='checkbox'] {
 .image-card {
   text-decoration: none;
   padding: 1%;
-  max-width: 10%;
-  min-width: 250px;
+  max-width: 9%;
+  max-height: 155px;
+  min-width: 270px;
   position: relative;
 
 
@@ -797,7 +799,6 @@ input[type='checkbox'] {
     }
 
   }
-
 
 
   padding: 5% 15% 5%;

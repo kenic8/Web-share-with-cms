@@ -140,7 +140,7 @@ export default async function getDocument(id,type) {
 
     return { result, error };
   } else {
-    console.log("all");
+    // console.log("all");
     try {
       const response = await fetch(
 
@@ -175,7 +175,7 @@ export  async function getDocumentfilter(id) {
   let result = null;
   let error = null;
   let data = [];
-  console.log(id)
+  // console.log(id)
 
   if (id != null) {
     console.log("filter");
@@ -210,10 +210,10 @@ export  async function getDocumentPage(offset) {
   let result = null;
   let error = null;
   let data = [];
-  console.log(offset)
+  // console.log(offset)
 
   if (offset != null) {
-    console.log("filter");
+    // console.log("filter");
     try {
       const response = await fetch(
         `http://192.168.88.201:8080/media-galleries?_start=${offset}&_limit=12`,

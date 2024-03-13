@@ -21,8 +21,6 @@ export default function Galleryfolders({foldername,id, props}) {
   let whoami;
   let subarr = [];
 
-  console.log(props)
-
   const changeQuery = (f) => {
     setQuery(f);
   };
@@ -30,7 +28,6 @@ export default function Galleryfolders({foldername,id, props}) {
   useEffect(() => {
     async function getData() {
       const fetch = await getDocumentPage(0);
-      console.log(props)
       setData(props.slice(0,12));
       changeQuery([]);
     }

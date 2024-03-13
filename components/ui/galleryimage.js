@@ -26,10 +26,7 @@ const style = {
 };
 
 export default function Galleryimage({ props, user, id }) {
-  // // console.log(props)
   const [liked, setLiked] = useState(false);
-  // // console.log(user);
-  console.log(props)
 
   const handleClicklike = (user) => {
     likeImage(user.uid, props.id);
@@ -37,7 +34,7 @@ export default function Galleryimage({ props, user, id }) {
   };
 
   const handleClickdislike = (user) => {
-    console.log(user);
+    // // console.log(user);
     removeLikedImage(user.uid, props.id);
     setLiked(false);
   };
@@ -54,8 +51,8 @@ export default function Galleryimage({ props, user, id }) {
 
   useEffect(() => {
     async function fetchData() {
-      // const likedStatus = await isliked(user, props.id);
-      // // setLiked(likedStatus);
+      const likedStatus = await isliked(user, props.id);
+      setLiked(likedStatus);
     }
 
     fetchData();
