@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import ComponentsPage from "./components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -10,7 +11,7 @@ export default function Home() {
          
         <div className="frontpage-content">
           <div className="frontpage-left">
-            <h1>Moodlewebshare</h1>
+            <h1>FUTIU-Webshare</h1>
             <h2>Til Udvikling og Deling </h2>
             <p>
               Vi tror på magten ved at dele viden. MoodleWebShare giver dig

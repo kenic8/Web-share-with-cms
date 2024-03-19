@@ -171,10 +171,11 @@ main {
   border-color: #6c6e6e28;
   border-width: 1px;
   width: 100%;
+  object-fit: cover;
 }
 .image-card-modal-image {
   flex-direction: row;
-   width: 80%;
+   width: 100%;
    min-height: 90%;
    max-height: 90%;
    border-radius: 6px;
@@ -197,7 +198,7 @@ main {
 
 
   img {
-    object-fit: scale-down;
+    object-fit: cover;
     width: 100%;
     max-height: 700px;
     height: auto;
